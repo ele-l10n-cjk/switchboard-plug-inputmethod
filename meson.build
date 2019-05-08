@@ -1,4 +1,4 @@
-project('switchboard-plug-inputmethod', 'vala', 'c', version: '1.0.0')
+project('inputmethod', 'vala', 'c', version: '1.0.0')
 
 switchboard_dep = dependency('switchboard-2.0')
 
