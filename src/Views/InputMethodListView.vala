@@ -28,7 +28,7 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
         List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
 
         // Fetch activated engines
-        string[] active_engines = new Settings ("org.freedesktop.ibus.general").get_strv ("preload-engines");
+        string[] active_engines = InputMethod.Plug.ibus_general_settings.get_strv ("preload-engines");
 
         // Add the language and the name of activated engines
         string[] engine_names;
