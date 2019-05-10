@@ -16,6 +16,7 @@ shared_module(meson.project_name(),
     dependencies: [
         dependency('granite'),
         dependency('gtk+-3.0'),
+        dependency('ibus-1.0'),
         switchboard_dep
     ],
     install: true,

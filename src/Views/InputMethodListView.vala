@@ -24,6 +24,32 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
     }
 
     construct {
+        // Fetch all available engines
+        List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
+
+        // Fetch activated engines
+        string[] active_engines = new Settings ("org.freedesktop.ibus.general").get_strv ("preload-engines");
+
+        // Add the language and the name of activated engines
+        string[] engine_names;
+        foreach (var engine in engines) {
+            foreach (var active_engine in active_engines) {
+                if (engine.name == active_engine) {
+                    // From https://github.com/ibus/ibus/blob/master/setup/enginetreeview.py#L155-L156
+                    engine_names += "%s - %s".printf (IBus.get_language_name (engine.language),
+                                                    gettext_engine_longname (engine));
+                }
+            }
+        }
+
+        var liststore = new Gtk.ListStore (1, typeof (string));
+
+        Gtk.TreeIter iter;
+        foreach (var engine_name in engine_names) {
+            liststore.append (out iter);
+            liststore.set (iter, 0, engine_name);
+        }
+
         var display = new Gtk.Frame (null);
 
         var cell = new Gtk.CellRendererText ();
@@ -35,6 +61,7 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
         tree.headers_visible = false;
         tree.expand = true;
         tree.tooltip_column = 0;
+        tree.set_model (liststore);
 
         var scroll = new Gtk.ScrolledWindow (null, null);
         scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
@@ -63,5 +90,20 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
             var pop = new AddIMPopover (add_button);
             pop.show_all ();
         });
+    }
+
+    // From https://github.com/ibus/ibus/blob/master/ui/gtk2/i18n.py#L47-L54
+    private string gettext_engine_longname (IBus.EngineDesc engine) {
+        string name = engine.name;
+        if (name.has_prefix ("xkb:")) {
+            return dgettext ("xkeyboard-config", engine.longname);
+        }
+
+        string textdomain = engine.textdomain;
+        if (textdomain == "") {
+            return engine.longname;
+        }
+
+        return dgettext (textdomain, engine.longname);
     }
 }
