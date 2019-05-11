@@ -42,31 +42,25 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
             }
         }
 
-        var liststore = new Gtk.ListStore (1, typeof (string));
-
-        Gtk.TreeIter iter;
-        foreach (var engine_name in engine_names) {
-            liststore.append (out iter);
-            liststore.set (iter, 0, engine_name);
-        }
-
         var display = new Gtk.Frame (null);
 
-        var cell = new Gtk.CellRendererText ();
-        cell.ellipsize_set = true;
-        cell.ellipsize = Pango.EllipsizeMode.END;
+        var listbox = new Gtk.ListBox ();
 
-        var tree = new Gtk.TreeView ();
-        tree.insert_column_with_attributes (-1, null, cell, "text", 0);
-        tree.headers_visible = false;
-        tree.expand = true;
-        tree.tooltip_column = 0;
-        tree.set_model (liststore);
+        foreach (var engine_name in engine_names) {
+            var listboxrow = new Gtk.ListBoxRow ();
+
+            var label = new Gtk.Label (engine_name);
+            label.margin = 6;
+            label.halign = Gtk.Align.START;
+
+            listboxrow.add (label);
+            listbox.add (listboxrow);
+        }
 
         var scroll = new Gtk.ScrolledWindow (null, null);
         scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
         scroll.expand = true;
-        scroll.add (tree);
+        scroll.add (listbox);
 
         var add_button = new Gtk.Button.from_icon_name ("list-add-symbolic", Gtk.IconSize.BUTTON);
         add_button.tooltip_text = _("Add…");
