@@ -12,9 +12,10 @@ Because this Plug is not ready for every day use yet, you'll need to install it 
 
 You'll need the following dependencies:
 
-* libswitchboard-2.0-dev
 * libgranite-dev
 * libgtk-3-dev
+* libibus-1.0-dev
+* libswitchboard-2.0-dev
 * meson
 * valac
 
