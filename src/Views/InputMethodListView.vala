@@ -84,21 +84,6 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
         });
     }
 
-    // From https://github.com/ibus/ibus/blob/master/ui/gtk2/i18n.py#L47-L54
-    private string gettext_engine_longname (IBus.EngineDesc engine) {
-        string name = engine.name;
-        if (name.has_prefix ("xkb:")) {
-            return dgettext ("xkeyboard-config", engine.longname);
-        }
-
-        string textdomain = engine.textdomain;
-        if (textdomain == "") {
-            return engine.longname;
-        }
-
-        return dgettext (textdomain, engine.longname);
-    }
-
     private void update_im_list () {
         listbox.get_children ().foreach ((listbox_child) => {
             listbox_child.destroy ();
@@ -111,7 +96,7 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
                 if (engine.name == active_engine) {
                     // From https://github.com/ibus/ibus/blob/master/setup/enginetreeview.py#L155-L156
                     engine_names += "%s - %s".printf (IBus.get_language_name (engine.language),
-                                                    gettext_engine_longname (engine));
+                                                    Utils.gettext_engine_longname (engine));
                 }
             }
         }

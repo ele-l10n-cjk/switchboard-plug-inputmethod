@@ -13,6 +13,7 @@ shared_module(meson.project_name(),
     'src/Views/SettingsView.vala',
     'src/Widgets/AddIMPopover.vala',
     'src/InputMethod.vala',
+    'src/Utils.vala',
     dependencies: [
         dependency('granite'),
         dependency('gtk+-3.0'),

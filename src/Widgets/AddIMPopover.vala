@@ -33,7 +33,7 @@ public class InputMethod.AddIMPopover : Gtk.Popover {
         List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
         string[] engine_names;
         foreach (var engine in engines) {
-            engine_names += "%s - %s".printf (IBus.get_language_name (engine.language), get_engine_lognmae (engine));
+            engine_names += "%s - %s".printf (IBus.get_language_name (engine.language), Utils.gettext_engine_longname (engine));
         }
 
         foreach (var engine_name in engine_names) {
@@ -85,19 +85,5 @@ public class InputMethod.AddIMPopover : Gtk.Popover {
         add_button.clicked.connect (() => {
             // TODO: Add input method
         });
-    }
-
-    private string get_engine_lognmae (IBus.EngineDesc engine) {
-        string name = engine.name;
-        if (name.has_prefix ("xkb:")) {
-            return dgettext ("xkeyboard-config", engine.longname);
-        }
-
-        string textdomain = engine.textdomain;
-        if (textdomain == "") {
-            return engine.longname;
-        }
-
-        return dgettext (textdomain, engine.longname);
     }
 }
