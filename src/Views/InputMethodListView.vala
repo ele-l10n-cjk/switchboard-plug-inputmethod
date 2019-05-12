@@ -16,6 +16,20 @@
 */
 
 public class InputMethod.InputMethodListView : Gtk.Grid {
+    private List<IBus.EngineDesc> engines;
+    private string[] _active_engines;
+    public string[] active_engines {
+        get {
+            _active_engines = InputMethod.Plug.ibus_general_settings.get_strv ("preload-engines");
+            return _active_engines;
+        }
+        set {
+            InputMethod.Plug.ibus_general_settings.set_strv ("preload-engines", value);
+        }
+    }
+    private string[] engine_names;
+    private Gtk.ListBox listbox;
+
     public InputMethodListView () {
         Object (
             column_spacing: 12,
@@ -25,37 +39,13 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
 
     construct {
         // Fetch all available engines
-        List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
-
-        // Fetch activated engines
-        string[] active_engines = InputMethod.Plug.ibus_general_settings.get_strv ("preload-engines");
-
-        // Add the language and the name of activated engines
-        string[] engine_names;
-        foreach (var engine in engines) {
-            foreach (var active_engine in active_engines) {
-                if (engine.name == active_engine) {
-                    // From https://github.com/ibus/ibus/blob/master/setup/enginetreeview.py#L155-L156
-                    engine_names += "%s - %s".printf (IBus.get_language_name (engine.language),
-                                                    gettext_engine_longname (engine));
-                }
-            }
-        }
+        engines = new IBus.Bus ().list_engines ();
 
         var display = new Gtk.Frame (null);
 
-        var listbox = new Gtk.ListBox ();
+        listbox = new Gtk.ListBox ();
 
-        foreach (var engine_name in engine_names) {
-            var listboxrow = new Gtk.ListBoxRow ();
-
-            var label = new Gtk.Label (engine_name);
-            label.margin = 6;
-            label.halign = Gtk.Align.START;
-
-            listboxrow.add (label);
-            listbox.add (listboxrow);
-        }
+        update_im_list ();
 
         var scroll = new Gtk.ScrolledWindow (null, null);
         scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
@@ -84,6 +74,14 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
             var pop = new AddIMPopover (add_button);
             pop.show_all ();
         });
+
+        remove_button.clicked.connect (() => {
+            int index = listbox.get_selected_row ().get_index ();
+            string[] new_engines = active_engines;
+            new_engines[index] = "";
+            active_engines = new_engines;
+            update_im_list ();
+        });
     }
 
     // From https://github.com/ibus/ibus/blob/master/ui/gtk2/i18n.py#L47-L54
@@ -99,5 +97,36 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
         }
 
         return dgettext (textdomain, engine.longname);
+    }
+
+    private void update_im_list () {
+        listbox.get_children ().foreach ((listbox_child) => {
+            listbox_child.destroy ();
+            engine_names = {};
+        });
+
+        // Add the language and the name of activated engines
+        foreach (var engine in engines) {
+            foreach (var active_engine in active_engines) {
+                if (engine.name == active_engine) {
+                    // From https://github.com/ibus/ibus/blob/master/setup/enginetreeview.py#L155-L156
+                    engine_names += "%s - %s".printf (IBus.get_language_name (engine.language),
+                                                    gettext_engine_longname (engine));
+                }
+            }
+        }
+
+        foreach (var engine_name in engine_names) {
+            var listboxrow = new Gtk.ListBoxRow ();
+
+            var label = new Gtk.Label (engine_name);
+            label.margin = 6;
+            label.halign = Gtk.Align.START;
+
+            listboxrow.add (label);
+            listbox.add (listboxrow);
+        }
+
+        listbox.show_all ();
     }
 }
