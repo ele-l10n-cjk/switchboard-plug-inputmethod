@@ -16,8 +16,11 @@
 */
 
 public class InputMethod.InputMethodListView : Gtk.Grid {
-    private List<IBus.EngineDesc> engines;
+    // Stores all installed engines
+    private List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
+
     private string[] _active_engines;
+    // Stores currently activated engines
     public string[] active_engines {
         get {
             _active_engines = InputMethod.Plug.ibus_general_settings.get_strv ("preload-engines");
@@ -27,6 +30,8 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
             InputMethod.Plug.ibus_general_settings.set_strv ("preload-engines", value);
         }
     }
+
+    // Stores names of currently activated engines
     private string[] engine_names;
     private Gtk.ListBox listbox;
 
@@ -38,9 +43,6 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
     }
 
     construct {
-        // Fetch all available engines
-        engines = new IBus.Bus ().list_engines ();
-
         var display = new Gtk.Frame (null);
 
         listbox = new Gtk.ListBox ();
