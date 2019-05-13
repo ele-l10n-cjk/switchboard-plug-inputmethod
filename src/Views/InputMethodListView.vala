@@ -28,6 +28,7 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
         }
         set {
             InputMethod.Plug.ibus_general_settings.set_strv ("preload-engines", value);
+            InputMethod.Plug.ibus_general_settings.set_strv ("engines-order", value);
         }
     }
 
