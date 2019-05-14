@@ -56,14 +56,14 @@ public class InputMethod.Plug : Switchboard.Plug {
         var label = new Gtk.Label (_("Some changes will not take effect until you log out"));
         content.add (label);
 
-        var input_method_view = new InputMethod.InputMethodListView ();
+        var engines_list_view = new InputMethod.EnginesListView ();
         var settings_view = new InputMethod.SettingsView ();
 
         var main_grid = new Gtk.Grid ();
         main_grid.column_spacing = 12;
         main_grid.row_spacing = 12;
         main_grid.margin = 12;
-        main_grid.attach (input_method_view, 0, 0, 1, 1);
+        main_grid.attach (engines_list_view, 0, 0, 1, 1);
         main_grid.attach (settings_view, 1, 0, 1, 1);
 
         content_grid = new Gtk.Grid ();

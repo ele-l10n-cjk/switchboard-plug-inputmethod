@@ -43,7 +43,7 @@ public class InputMethod.SettingsView : Gtk.Grid {
         choose_im_combobox.sensitive = false;
         choose_im_combobox.tooltip_text = _("This option is not available yet");
 
-        var keyboard_shortcut_label = new Gtk.Label (_("Switch input method:"));
+        var keyboard_shortcut_label = new Gtk.Label (_("Switch engines:"));
         keyboard_shortcut_label.halign = Gtk.Align.END;
 
         var keyboard_shortcut_combobox = new Gtk.ComboBoxText ();

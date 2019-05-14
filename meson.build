@@ -9,9 +9,9 @@ add_project_arguments(
 )
 
 shared_module(meson.project_name(),
-    'src/Views/InputMethodListView.vala',
+    'src/Views/EnginesListView.vala',
     'src/Views/SettingsView.vala',
-    'src/Widgets/AddIMPopover.vala',
+    'src/Widgets/AddEnginesPopover.vala',
     'src/InputMethod.vala',
     'src/Utils.vala',
     dependencies: [

@@ -15,7 +15,7 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-public class InputMethod.InputMethodListView : Gtk.Grid {
+public class InputMethod.EnginesListView : Gtk.Grid {
     // Stores all installed engines
     private List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
 
@@ -36,7 +36,7 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
     private string[] engine_names;
     private Gtk.ListBox listbox;
 
-    public InputMethodListView () {
+    public EnginesListView () {
         Object (
             column_spacing: 12,
             row_spacing: 12
@@ -48,7 +48,7 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
 
         listbox = new Gtk.ListBox ();
 
-        update_im_list ();
+        update_engines_list ();
 
         var scroll = new Gtk.ScrolledWindow (null, null);
         scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
@@ -73,7 +73,7 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
         display.add (grid);
         add (display);
 
-        var pop = new AddIMPopover (add_button);
+        var pop = new AddEnginesPopover (add_button);
         add_button.clicked.connect (() => {
             pop.show_all ();
         });
@@ -82,7 +82,7 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
             string[] new_engine_list = active_engines;
             new_engine_list += engine;
             active_engines = new_engine_list;
-            update_im_list ();
+            update_engines_list ();
             pop.hide ();
         });
 
@@ -91,11 +91,11 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
             string[] new_engines = active_engines;
             new_engines[index] = "";
             active_engines = new_engines;
-            update_im_list ();
+            update_engines_list ();
         });
     }
 
-    private void update_im_list () {
+    private void update_engines_list () {
         listbox.get_children ().foreach ((listbox_child) => {
             listbox_child.destroy ();
             engine_names = {};

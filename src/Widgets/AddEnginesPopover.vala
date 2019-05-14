@@ -15,10 +15,10 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-public class InputMethod.AddIMPopover : Gtk.Popover {
+public class InputMethod.AddEnginesPopover : Gtk.Popover {
     public signal void add_engine (string new_engine);
 
-    public AddIMPopover (Gtk.Widget relative_object) {
+    public AddEnginesPopover (Gtk.Widget relative_object) {
         Object (
             relative_to: relative_object
         );
@@ -27,7 +27,7 @@ public class InputMethod.AddIMPopover : Gtk.Popover {
     construct {
         var seach_entry = new Gtk.SearchEntry ();
         seach_entry.margin = 6;
-        seach_entry.placeholder_text = _("Search input method");
+        seach_entry.placeholder_text = _("Search engine");
 
         var listbox = new Gtk.ListBox ();
 
@@ -72,7 +72,7 @@ public class InputMethod.AddIMPopover : Gtk.Popover {
 
         var cancel_button = new Gtk.Button.with_label (_("Cancel"));
 
-        var add_button = new Gtk.Button.with_label (_("Add Input Method"));
+        var add_button = new Gtk.Button.with_label (_("Add Engine"));
         add_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
         var buttons_grid = new Gtk.Grid ();
