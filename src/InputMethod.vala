@@ -85,11 +85,16 @@ public class InputMethod.Plug : Switchboard.Plug {
     }
 
     public override void search_callback (string location) {
+
     }
 
     // 'search' returns results like ("Keyboard → Behavior → Duration", "keyboard<sep>behavior")
     public override async Gee.TreeMap<string, string> search (string search) {
-        return new Gee.TreeMap<string, string> (null, null);
+        var search_results = new Gee.TreeMap<string, string> ((GLib.CompareDataFunc<string>)strcmp, (Gee.EqualDataFunc<string>)str_equal);
+        search_results.set ("%s → %s".printf (display_name, _("Choose preferred input method")), "");
+        search_results.set ("%s → %s".printf (display_name, _("Switch engines")), "");
+        search_results.set ("%s → %s".printf (display_name, _("Show candidate window")), "");
+        return search_results;
     }
 }
 
