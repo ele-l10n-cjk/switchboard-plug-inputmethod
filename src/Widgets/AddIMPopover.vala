@@ -16,6 +16,8 @@
 */
 
 public class InputMethod.AddIMPopover : Gtk.Popover {
+    public signal void add_engine (string new_engine);
+
     public AddIMPopover (Gtk.Widget relative_object) {
         Object (
             relative_to: relative_object
@@ -31,15 +33,30 @@ public class InputMethod.AddIMPopover : Gtk.Popover {
 
         // TODO: Sort the list by name
         List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
+
+        /*
+         * Stores strings used to show in the UI.
+         * It consists from "<Language name> - <Engine name>",
+         * e.g. "Japanese - Mozc" or "Chinese - Intelligent Pinyin"
+         */
+        string[] engine_full_names;
+
+        /*
+         * Stores strings used to add/remove engines in the code and won't be shown in the UI.
+         * It consists from "<Engine name>",
+         * e.g. "mozc-jp" or "libpinyin"
+         */
         string[] engine_names;
+
         foreach (var engine in engines) {
-            engine_names += "%s - %s".printf (IBus.get_language_name (engine.language), Utils.gettext_engine_longname (engine));
+            engine_names += engine.name;
+            engine_full_names += "%s - %s".printf (IBus.get_language_name (engine.language), Utils.gettext_engine_longname (engine));
         }
 
-        foreach (var engine_name in engine_names) {
+        foreach (var engine_full_name in engine_full_names) {
             var listboxrow = new Gtk.ListBoxRow ();
 
-            var label = new Gtk.Label (engine_name);
+            var label = new Gtk.Label (engine_full_name);
             label.margin = 6;
             label.halign = Gtk.Align.START;
 
@@ -83,7 +100,8 @@ public class InputMethod.AddIMPopover : Gtk.Popover {
         });
 
         add_button.clicked.connect (() => {
-            // TODO: Add input method
+            int index = listbox.get_selected_row ().get_index ();
+            add_engine (engine_names[index]);
         });
     }
 }

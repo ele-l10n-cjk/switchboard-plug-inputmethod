@@ -73,9 +73,17 @@ public class InputMethod.InputMethodListView : Gtk.Grid {
         display.add (grid);
         add (display);
 
+        var pop = new AddIMPopover (add_button);
         add_button.clicked.connect (() => {
-            var pop = new AddIMPopover (add_button);
             pop.show_all ();
+        });
+
+        pop.add_engine.connect ((engine) => {
+            string[] new_engine_list = active_engines;
+            new_engine_list += engine;
+            active_engines = new_engine_list;
+            update_im_list ();
+            pop.hide ();
         });
 
         remove_button.clicked.connect (() => {
