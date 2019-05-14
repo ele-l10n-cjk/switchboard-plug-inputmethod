@@ -33,7 +33,7 @@ public class InputMethod.EnginesListView : Gtk.Grid {
     }
 
     // Stores names of currently activated engines
-    private string[] engine_names;
+    private string[] engine_full_names;
     private Gtk.ListBox listbox;
 
     public EnginesListView () {
@@ -98,24 +98,23 @@ public class InputMethod.EnginesListView : Gtk.Grid {
     private void update_engines_list () {
         listbox.get_children ().foreach ((listbox_child) => {
             listbox_child.destroy ();
-            engine_names = {};
+            engine_full_names = {};
         });
 
         // Add the language and the name of activated engines
         foreach (var engine in engines) {
             foreach (var active_engine in active_engines) {
                 if (engine.name == active_engine) {
-                    // From https://github.com/ibus/ibus/blob/master/setup/enginetreeview.py#L155-L156
-                    engine_names += "%s - %s".printf (IBus.get_language_name (engine.language),
+                    engine_full_names += "%s - %s".printf (IBus.get_language_name (engine.language),
                                                     Utils.gettext_engine_longname (engine));
                 }
             }
         }
 
-        foreach (var engine_name in engine_names) {
+        foreach (var engine_full_name in engine_full_names) {
             var listboxrow = new Gtk.ListBoxRow ();
 
-            var label = new Gtk.Label (engine_name);
+            var label = new Gtk.Label (engine_full_name);
             label.margin = 6;
             label.halign = Gtk.Align.START;
 

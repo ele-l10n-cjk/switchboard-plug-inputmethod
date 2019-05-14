@@ -35,22 +35,23 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
         List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
 
         /*
-         * Stores strings used to show in the UI.
-         * It consists from "<Language name> - <Engine name>",
-         * e.g. "Japanese - Mozc" or "Chinese - Intelligent Pinyin"
-         */
-        string[] engine_full_names;
-
-        /*
          * Stores strings used to add/remove engines in the code and won't be shown in the UI.
          * It consists from "<Engine name>",
          * e.g. "mozc-jp" or "libpinyin"
          */
         string[] engine_names;
 
+        /*
+         * Stores strings used to show in the UI.
+         * It consists from "<Language name> - <Engine name>",
+         * e.g. "Japanese - Mozc" or "Chinese - Intelligent Pinyin"
+         */
+        string[] engine_full_names;
+
         foreach (var engine in engines) {
             engine_names += engine.name;
-            engine_full_names += "%s - %s".printf (IBus.get_language_name (engine.language), Utils.gettext_engine_longname (engine));
+            engine_full_names += "%s - %s".printf (IBus.get_language_name (engine.language),
+                                                Utils.gettext_engine_longname (engine));
         }
 
         foreach (var engine_full_name in engine_full_names) {
