@@ -88,8 +88,23 @@ public class InputMethod.EnginesListView : Gtk.Grid {
 
         remove_button.clicked.connect (() => {
             int index = listbox.get_selected_row ().get_index ();
-            string[] new_engines = active_engines;
-            new_engines[index] = "";
+
+            // Convert to GLib.Array once, because Vala does not support "-=" operator
+            Array<string> removed_lists = new Array<string> ();
+            foreach (var active_engine in active_engines) {
+                removed_lists.append_val (active_engine);
+            }
+            // Remove applicable engine from the list
+            removed_lists.remove_index (index);
+
+            /*
+             * Substitute the contents of removed_lists through another string array,
+             * because array concatenation is not supported for public array variables and parameters
+             */
+            string[] new_engines;
+            for (int i = 0; i < removed_lists.length; i++) {
+                new_engines += removed_lists.index (i);
+            }
             active_engines = new_engines;
             update_engines_list ();
         });
@@ -102,8 +117,8 @@ public class InputMethod.EnginesListView : Gtk.Grid {
         });
 
         // Add the language and the name of activated engines
-        foreach (var engine in engines) {
-            foreach (var active_engine in active_engines) {
+        foreach (var active_engine in active_engines) {
+            foreach (var engine in engines) {
                 if (engine.name == active_engine) {
                     engine_full_names += "%s - %s".printf (IBus.get_language_name (engine.language),
                                                     Utils.gettext_engine_longname (engine));
