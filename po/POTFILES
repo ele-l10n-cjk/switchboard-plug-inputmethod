@@ -1,0 +1,4 @@
+src/Views/EnginesListView.vala
+src/Views/SettingsView.vala
+src/Widgets/AddEnginesPopover.vala
+src/InputMethod.vala
