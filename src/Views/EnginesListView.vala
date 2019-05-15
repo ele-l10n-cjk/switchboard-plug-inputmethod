@@ -61,6 +61,8 @@ public class InputMethod.EnginesListView : Gtk.Grid {
         var remove_button = new Gtk.Button.from_icon_name ("list-remove-symbolic", Gtk.IconSize.BUTTON);
         remove_button.tooltip_text = _("Remove");
 
+        listbox.select_row (listbox.get_row_at_index (0));
+
         var actionbar = new Gtk.ActionBar ();
         actionbar.get_style_context ().add_class (Gtk.STYLE_CLASS_INLINE_TOOLBAR);
         actionbar.add (add_button);
