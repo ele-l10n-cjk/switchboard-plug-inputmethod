@@ -6,9 +6,18 @@ Switchboard Input Method Plug is an additional Plug for [Switchboard](https://gi
 
 This project tries to address https://github.com/elementary/switchboard-plug-keyboard/issues/22 and https://github.com/bagjunggyu/Input-Method-Tab.
 
-## Building and Installation
+## Installation
 
-Because this Plug is not ready for every day use yet, you'll need to install it by building. I'm going to create a PPA to allow you to install it more easily when the Plug is ready.
+### For Users
+
+    sudo add-apt-repository ppa:ryonakaknock3/switchboard-plug-inputmethod
+    sudo apt install switchboard-plug-inputmethod
+
+If you have never added a PPA before, you might need to run this command first: 
+
+    sudo apt install software-properties-common
+
+### For Developers
 
 You'll need the following dependencies:
 
