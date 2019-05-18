@@ -25,9 +25,11 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
     }
 
     construct {
-        var seach_entry = new Gtk.SearchEntry ();
-        seach_entry.margin = 6;
-        seach_entry.placeholder_text = _("Search engine");
+        var search_entry = new Gtk.SearchEntry ();
+        search_entry.margin = 6;
+        search_entry.placeholder_text = _("Search engine");
+
+        var liststore = new GLib.ListStore (Type.OBJECT);
 
         var listbox = new Gtk.ListBox ();
 
@@ -55,6 +57,8 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
         }
 
         foreach (var engine_full_name in engine_full_names) {
+            liststore.append (new AddEnginesList (engine_full_name));
+
             var listboxrow = new Gtk.ListBoxRow ();
 
             var label = new Gtk.Label (engine_full_name);
@@ -87,14 +91,23 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
         var grid = new Gtk.Grid ();
         grid.margin = 6;
         grid.hexpand = true;
-        grid.attach (seach_entry, 0, 0, 1, 1);
+        grid.attach (search_entry, 0, 0, 1, 1);
         grid.attach (scrolled, 0, 1, 1, 1);
         grid.attach (new Gtk.Separator (Gtk.Orientation.HORIZONTAL), 0, 2, 1, 1);
         grid.attach (buttons_grid, 0, 3, 1, 1);
 
-        seach_entry.grab_focus ();
+        search_entry.grab_focus ();
 
         add (grid);
+
+        listbox.set_filter_func ((list_box_row) => {
+            var item = (AddEnginesList) liststore.get_item (list_box_row.get_index ());
+            return search_entry.text.down () in item.list_item.down ();
+        });
+
+        search_entry.search_changed.connect (() => {
+            listbox.invalidate_filter ();
+        });
 
         cancel_button.clicked.connect (() => {
             popdown ();

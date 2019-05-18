@@ -13,6 +13,7 @@ shared_module(meson.project_name(),
     'src/Views/EnginesListView.vala',
     'src/Views/SettingsView.vala',
     'src/Widgets/AddEnginesPopover.vala',
+    'src/AddEnginesList.vala',
     'src/InputMethod.vala',
     'src/Utils.vala',
     dependencies: [
