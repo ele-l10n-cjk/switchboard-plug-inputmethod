@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: inputmethod-plug\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-15 21:53+0900\n"
+"POT-Creation-Date: 2019-05-19 12:34+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,6 @@ msgstr ""
 msgid "iBus"
 msgstr ""
 
-#. The following two lines should be removed when the plug supports switching input methods
 #: src/Views/SettingsView.vala:44
 msgid "This option is not available yet"
 msgstr ""
@@ -74,15 +73,17 @@ msgstr ""
 msgid "Always show"
 msgstr ""
 
-#: src/Widgets/AddEnginesPopover.vala:30
+#. TRANSLATORS: This text appears in a search entry and tell users to type some search word in order to look for a input method engine which user want to add.
+#. It does not mean search engines in web browsers.
+#: src/Widgets/AddEnginesPopover.vala:32
 msgid "Search engine"
 msgstr ""
 
-#: src/Widgets/AddEnginesPopover.vala:74
+#: src/Widgets/AddEnginesPopover.vala:80
 msgid "Cancel"
 msgstr ""
 
-#: src/Widgets/AddEnginesPopover.vala:76
+#: src/Widgets/AddEnginesPopover.vala:82
 msgid "Add Engine"
 msgstr ""
 
