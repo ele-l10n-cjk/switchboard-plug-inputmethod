@@ -1,0 +1,113 @@
+# Japanese translations for inputmethod-plug package.
+# Copyright (C) 2019 THE inputmethod-plug'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the inputmethod-plug package.
+# Automatically generated, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: inputmethod-plug\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-19 12:38+0900\n"
+"PO-Revision-Date: 2019-05-19 12:36+0900\n"
+"Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.2.2\n"
+
+#: src/Views/EnginesListView.vala:59
+msgid "Add…"
+msgstr "追加…"
+
+#: src/Views/EnginesListView.vala:62
+msgid "Remove"
+msgstr "削除"
+
+#: src/Views/SettingsView.vala:31
+msgid "Choose preferred input method:"
+msgstr "使用するインプットメソッドを選択:"
+
+#: src/Views/SettingsView.vala:39
+msgid "Fcitx"
+msgstr "Fcitx"
+
+#: src/Views/SettingsView.vala:40
+msgid "iBus"
+msgstr "iBus"
+
+#: src/Views/SettingsView.vala:44
+msgid "This option is not available yet"
+msgstr "このオプションはまだ利用できません"
+
+#: src/Views/SettingsView.vala:46
+msgid "Switch engines:"
+msgstr "エンジンを切り替え:"
+
+#: src/Views/SettingsView.vala:51
+msgid "Alt + Space"
+msgstr "Alt + Space"
+
+#: src/Views/SettingsView.vala:52
+msgid "Ctrl + Space"
+msgstr "Ctrl + Space"
+
+#: src/Views/SettingsView.vala:53
+msgid "Shift + Space"
+msgstr "Shift + Space"
+
+#: src/Views/SettingsView.vala:56
+msgid "Show candidate window:"
+msgstr "候補ウィンドウを表示:"
+
+#: src/Views/SettingsView.vala:61
+msgid "Do not show"
+msgstr "表示しない"
+
+#: src/Views/SettingsView.vala:62
+msgid "Auto hide"
+msgstr "自動的に隠す"
+
+#: src/Views/SettingsView.vala:63
+msgid "Always show"
+msgstr "常に表示"
+
+#. TRANSLATORS: This text appears in a search entry and tell users to type some search word in order to look for a input method engine which user want to add.
+#. It does not mean search engines in web browsers.
+#: src/Widgets/AddEnginesPopover.vala:32
+msgid "Search engine"
+msgstr "エンジンを検索"
+
+#: src/Widgets/AddEnginesPopover.vala:80
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: src/Widgets/AddEnginesPopover.vala:82
+msgid "Add Engine"
+msgstr "エンジンを追加"
+
+#: src/InputMethod.vala:28
+msgid "Input Method"
+msgstr "インプットメソッド"
+
+#: src/InputMethod.vala:29
+msgid "Configure input method"
+msgstr "インプットメソッドを設定します"
+
+#: src/InputMethod.vala:56
+msgid "Some changes will not take effect until you log out"
+msgstr "一部の変更は、ログアウト後に反映されます"
+
+#: src/InputMethod.vala:94
+msgid "Choose preferred input method"
+msgstr "使用するインプットメソッドを選択"
+
+#: src/InputMethod.vala:95
+msgid "Switch engines"
+msgstr "エンジンを切り替え"
+
+#: src/InputMethod.vala:96
+msgid "Show candidate window"
+msgstr "候補ウィンドウを表示"
