@@ -35,6 +35,7 @@ public class InputMethod.EnginesListView : Gtk.Grid {
     // Stores names of currently activated engines
     private string[] engine_full_names;
     private Gtk.ListBox listbox;
+    private Gtk.Button remove_button;
 
     public EnginesListView () {
         Object (
@@ -48,8 +49,6 @@ public class InputMethod.EnginesListView : Gtk.Grid {
 
         listbox = new Gtk.ListBox ();
 
-        update_engines_list ();
-
         var scroll = new Gtk.ScrolledWindow (null, null);
         scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
         scroll.expand = true;
@@ -58,8 +57,10 @@ public class InputMethod.EnginesListView : Gtk.Grid {
         var add_button = new Gtk.Button.from_icon_name ("list-add-symbolic", Gtk.IconSize.BUTTON);
         add_button.tooltip_text = _("Add…");
 
-        var remove_button = new Gtk.Button.from_icon_name ("list-remove-symbolic", Gtk.IconSize.BUTTON);
+        remove_button = new Gtk.Button.from_icon_name ("list-remove-symbolic", Gtk.IconSize.BUTTON);
         remove_button.tooltip_text = _("Remove");
+
+        update_engines_list ();
 
         listbox.select_row (listbox.get_row_at_index (0));
 
@@ -84,8 +85,11 @@ public class InputMethod.EnginesListView : Gtk.Grid {
             string[] new_engine_list = active_engines;
             new_engine_list += engine;
             active_engines = new_engine_list;
+
             update_engines_list ();
             pop.hide ();
+
+            listbox.select_row (listbox.get_row_at_index (0));
         });
 
         remove_button.clicked.connect (() => {
@@ -109,6 +113,8 @@ public class InputMethod.EnginesListView : Gtk.Grid {
             }
             active_engines = new_engines;
             update_engines_list ();
+
+            listbox.select_row (listbox.get_row_at_index (0));
         });
     }
 
@@ -140,5 +146,8 @@ public class InputMethod.EnginesListView : Gtk.Grid {
         }
 
         listbox.show_all ();
+
+        // Update the sensitivity of remove_button depends on whether there are any listboxrow or not
+        remove_button.sensitive = (listbox.get_row_at_index (0) == null) ? false : true;
     }
 }
