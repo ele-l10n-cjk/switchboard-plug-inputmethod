@@ -62,8 +62,6 @@ public class InputMethod.EnginesListView : Gtk.Grid {
 
         update_engines_list ();
 
-        listbox.select_row (listbox.get_row_at_index (0));
-
         var actionbar = new Gtk.ActionBar ();
         actionbar.get_style_context ().add_class (Gtk.STYLE_CLASS_INLINE_TOOLBAR);
         actionbar.add (add_button);
@@ -88,8 +86,6 @@ public class InputMethod.EnginesListView : Gtk.Grid {
 
             update_engines_list ();
             pop.hide ();
-
-            listbox.select_row (listbox.get_row_at_index (0));
         });
 
         remove_button.clicked.connect (() => {
@@ -113,8 +109,6 @@ public class InputMethod.EnginesListView : Gtk.Grid {
             }
             active_engines = new_engines;
             update_engines_list ();
-
-            listbox.select_row (listbox.get_row_at_index (0));
         });
     }
 
@@ -146,6 +140,7 @@ public class InputMethod.EnginesListView : Gtk.Grid {
         }
 
         listbox.show_all ();
+        listbox.select_row (listbox.get_row_at_index (0));
 
         // Update the sensitivity of remove_button depends on whether there are any listboxrow or not
         remove_button.sensitive = (listbox.get_row_at_index (0) == null) ? false : true;
