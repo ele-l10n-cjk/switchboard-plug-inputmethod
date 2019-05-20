@@ -1,4 +1,4 @@
-project('inputmethod', 'vala', 'c', version: '0.1.2')
+project('inputmethod', 'vala', 'c', version: '0.1.3')
 
 switchboard_dep = dependency('switchboard-2.0')
 gettext_name = meson.project_name() + '-plug'
