@@ -19,19 +19,6 @@ public class InputMethod.EnginesListView : Gtk.Grid {
     // Stores all installed engines
     private List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
 
-    private string[] _active_engines;
-    // Stores currently activated engines
-    public string[] active_engines {
-        get {
-            _active_engines = InputMethod.Plug.ibus_general_settings.get_strv ("preload-engines");
-            return _active_engines;
-        }
-        set {
-            InputMethod.Plug.ibus_general_settings.set_strv ("preload-engines", value);
-            InputMethod.Plug.ibus_general_settings.set_strv ("engines-order", value);
-        }
-    }
-
     // Stores names of currently activated engines
     private string[] engine_full_names;
     private Gtk.ListBox listbox;
@@ -80,9 +67,9 @@ public class InputMethod.EnginesListView : Gtk.Grid {
         });
 
         pop.add_engine.connect ((engine) => {
-            string[] new_engine_list = active_engines;
+            string[] new_engine_list = InputMethod.Utils.active_engines;
             new_engine_list += engine;
-            active_engines = new_engine_list;
+            InputMethod.Utils.active_engines = new_engine_list;
 
             update_engines_list ();
             pop.hide ();
@@ -93,7 +80,7 @@ public class InputMethod.EnginesListView : Gtk.Grid {
 
             // Convert to GLib.Array once, because Vala does not support "-=" operator
             Array<string> removed_lists = new Array<string> ();
-            foreach (var active_engine in active_engines) {
+            foreach (var active_engine in InputMethod.Utils.active_engines) {
                 removed_lists.append_val (active_engine);
             }
             // Remove applicable engine from the list
@@ -107,7 +94,7 @@ public class InputMethod.EnginesListView : Gtk.Grid {
             for (int i = 0; i < removed_lists.length; i++) {
                 new_engines += removed_lists.index (i);
             }
-            active_engines = new_engines;
+            InputMethod.Utils.active_engines = new_engines;
             update_engines_list ();
         });
     }
@@ -119,7 +106,7 @@ public class InputMethod.EnginesListView : Gtk.Grid {
         });
 
         // Add the language and the name of activated engines
-        foreach (var active_engine in active_engines) {
+        foreach (var active_engine in InputMethod.Utils.active_engines) {
             foreach (var engine in engines) {
                 if (engine.name == active_engine) {
                     engine_full_names += "%s - %s".printf (IBus.get_language_name (engine.language),

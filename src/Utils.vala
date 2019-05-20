@@ -16,6 +16,19 @@
 */
 
 public class InputMethod.Utils : Object {
+    private static string[] _active_engines;
+    // Stores currently activated engines
+    public static string[] active_engines {
+        get {
+            _active_engines = InputMethod.Plug.ibus_general_settings.get_strv ("preload-engines");
+            return _active_engines;
+        }
+        set {
+            InputMethod.Plug.ibus_general_settings.set_strv ("preload-engines", value);
+            InputMethod.Plug.ibus_general_settings.set_strv ("engines-order", value);
+        }
+    }
+
     // From https://github.com/ibus/ibus/blob/master/ui/gtk2/i18n.py#L47-L54
     public static string gettext_engine_longname (IBus.EngineDesc engine) {
         string name = engine.name;

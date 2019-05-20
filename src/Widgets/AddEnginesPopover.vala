@@ -117,6 +117,14 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
 
         add_button.clicked.connect (() => {
             int index = listbox.get_selected_row ().get_index ();
+
+            // If the engine trying to add is already active, do not add it
+            foreach (var active_engine in InputMethod.Utils.active_engines) {
+                if (active_engine == engine_names[index]) {
+                    this.hide ();
+                    return;
+                }
+            }
             add_engine (engine_names[index]);
         });
     }
