@@ -72,7 +72,7 @@ public class InputMethod.EnginesListView : Gtk.Grid {
             InputMethod.Utils.active_engines = new_engine_list;
 
             update_engines_list ();
-            pop.hide ();
+            pop.popdown ();
         });
 
         remove_button.clicked.connect (() => {
