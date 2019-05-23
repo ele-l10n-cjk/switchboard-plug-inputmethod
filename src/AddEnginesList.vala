@@ -16,9 +16,23 @@
 */
 
 public class InputMethod.AddEnginesList : Object {
-    public string list_item { get; set; }
+    /*
+     * Stores strings used to add/remove engines in the code and won't be shown in the UI.
+     * It consists from "<Engine name>",
+     * e.g. "mozc-jp" or "libpinyin"
+     */
+    public string engine_id { get; set; }
 
-    public AddEnginesList (string name) {
-        list_item = name;
+    /*
+     * Stores strings used to show in the UI.
+     * It consists from "<Language name> - <Engine name>",
+     * e.g. "Japanese - Mozc" or "Chinese - Intelligent Pinyin"
+     */
+    public string engine_full_name { get; set; }
+
+    public AddEnginesList (IBus.EngineDesc engine) {
+        engine_id = engine.name;
+        engine_full_name = "%s - %s".printf (IBus.get_language_name (engine.language),
+                                            Utils.gettext_engine_longname (engine));
     }
 }

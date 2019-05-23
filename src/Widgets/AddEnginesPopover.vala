@@ -35,35 +35,20 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
 
         var listbox = new Gtk.ListBox ();
 
-        // TODO: Sort the list by name
         List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
 
-        /*
-         * Stores strings used to add/remove engines in the code and won't be shown in the UI.
-         * It consists from "<Engine name>",
-         * e.g. "mozc-jp" or "libpinyin"
-         */
-        string[] engine_names;
-
-        /*
-         * Stores strings used to show in the UI.
-         * It consists from "<Language name> - <Engine name>",
-         * e.g. "Japanese - Mozc" or "Chinese - Intelligent Pinyin"
-         */
-        string[] engine_full_names;
-
         foreach (var engine in engines) {
-            engine_names += engine.name;
-            engine_full_names += "%s - %s".printf (IBus.get_language_name (engine.language),
-                                                Utils.gettext_engine_longname (engine));
+            liststore.append (new AddEnginesList (engine));
         }
 
-        foreach (var engine_full_name in engine_full_names) {
-            liststore.append (new AddEnginesList (engine_full_name));
+        liststore.sort ((a, b) => {
+            return ((AddEnginesList) a).engine_full_name.collate (((AddEnginesList) b).engine_full_name);
+        });
 
+        for (int i = 0; i < liststore.get_n_items (); i++) {
             var listboxrow = new Gtk.ListBoxRow ();
 
-            var label = new Gtk.Label (engine_full_name);
+            var label = new Gtk.Label (((AddEnginesList) liststore.get_item (i)).engine_full_name);
             label.margin = 6;
             label.halign = Gtk.Align.START;
 
@@ -105,7 +90,7 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
 
         listbox.set_filter_func ((list_box_row) => {
             var item = (AddEnginesList) liststore.get_item (list_box_row.get_index ());
-            return search_entry.text.down () in item.list_item.down ();
+            return search_entry.text.down () in item.engine_full_name.down ();
         });
 
         search_entry.search_changed.connect (() => {
@@ -121,12 +106,12 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
 
             // If the engine trying to add is already active, do not add it
             foreach (var active_engine in InputMethod.Utils.active_engines) {
-                if (active_engine == engine_names[index]) {
+                if (active_engine == (((AddEnginesList) liststore.get_item (index)).engine_id)) {
                     popdown ();
                     return;
                 }
             }
-            add_engine (engine_names[index]);
+            add_engine (((AddEnginesList) liststore.get_item (index)).engine_id);
         });
     }
 }
