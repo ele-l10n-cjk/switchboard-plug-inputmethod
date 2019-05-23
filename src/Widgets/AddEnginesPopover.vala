@@ -98,6 +98,7 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
         grid.attach (new Gtk.Separator (Gtk.Orientation.HORIZONTAL), 0, 2, 1, 1);
         grid.attach (buttons_grid, 0, 3, 1, 1);
 
+        listbox.select_row (listbox.get_row_at_index (0));
         search_entry.grab_focus ();
 
         add (grid);
