@@ -18,7 +18,6 @@
 
 public class InputMethod.Plug : Switchboard.Plug {
     private Gtk.Grid content_grid;
-    private Gtk.InfoBar infobar;
     public static Settings ibus_general_settings;
     public static Settings ibus_panel_settings;
 
@@ -38,42 +37,36 @@ public class InputMethod.Plug : Switchboard.Plug {
     }
 
     public override Gtk.Widget get_widget () {
-        setup_ui ();
-        content_grid.show_all ();
+        if (content_grid == null) {
+            var infobar = new Gtk.InfoBar ();
+            infobar.message_type = Gtk.MessageType.WARNING;
+            infobar.no_show_all = true;
+            var content = (Gtk.Container) infobar.get_content_area ();
+            var label = new Gtk.Label (_("Some changes will not take effect until you log out"));
+            content.add (label);
 
-        return content_grid;
-    }
+            var engines_list_view = new InputMethod.EnginesListView ();
+            var settings_view = new InputMethod.SettingsView ();
 
-    private void setup_ui () {
-        if (content_grid != null) {
-            return;
+            var main_grid = new Gtk.Grid ();
+            main_grid.column_spacing = 12;
+            main_grid.row_spacing = 12;
+            main_grid.margin = 12;
+            main_grid.attach (engines_list_view, 0, 0, 1, 1);
+            main_grid.attach (settings_view, 1, 0, 1, 1);
+
+            content_grid = new Gtk.Grid ();
+            content_grid.attach (infobar, 0, 0, 1, 1);
+            content_grid.attach (main_grid, 0, 1, 1, 1);
+            content_grid.show_all ();
+
+            settings_view.on_im_changed.connect (() => {
+                infobar.no_show_all = false;
+                infobar.show_all ();
+            });
         }
 
-        infobar = new Gtk.InfoBar ();
-        infobar.message_type = Gtk.MessageType.WARNING;
-        infobar.no_show_all = true;
-        var content = (Gtk.Container) infobar.get_content_area ();
-        var label = new Gtk.Label (_("Some changes will not take effect until you log out"));
-        content.add (label);
-
-        var engines_list_view = new InputMethod.EnginesListView ();
-        var settings_view = new InputMethod.SettingsView ();
-
-        var main_grid = new Gtk.Grid ();
-        main_grid.column_spacing = 12;
-        main_grid.row_spacing = 12;
-        main_grid.margin = 12;
-        main_grid.attach (engines_list_view, 0, 0, 1, 1);
-        main_grid.attach (settings_view, 1, 0, 1, 1);
-
-        content_grid = new Gtk.Grid ();
-        content_grid.attach (infobar, 0, 0, 1, 1);
-        content_grid.attach (main_grid, 0, 1, 1, 1);
-
-        settings_view.on_im_changed.connect (() => {
-            infobar.no_show_all = false;
-            infobar.show_all ();
-        });
+        return content_grid;
     }
 
     public override void shown () {

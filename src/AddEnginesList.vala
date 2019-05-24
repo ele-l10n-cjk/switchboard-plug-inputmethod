@@ -21,14 +21,14 @@ public class InputMethod.AddEnginesList : Object {
      * It consists from "<Engine name>",
      * e.g. "mozc-jp" or "libpinyin"
      */
-    public string engine_id { get; set; }
+    public string engine_id { get; private set; }
 
     /*
      * Stores strings used to show in the UI.
      * It consists from "<Language name> - <Engine name>",
      * e.g. "Japanese - Mozc" or "Chinese - Intelligent Pinyin"
      */
-    public string engine_full_name { get; set; }
+    public string engine_full_name { get; private set; }
 
     public AddEnginesList (IBus.EngineDesc engine) {
         engine_id = engine.name;

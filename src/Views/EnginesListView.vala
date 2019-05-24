@@ -19,8 +19,6 @@ public class InputMethod.EnginesListView : Gtk.Grid {
     // Stores all installed engines
     private List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
 
-    // Stores names of currently activated engines
-    private string[] engine_full_names;
     private Gtk.ListBox listbox;
     private Gtk.Button remove_button;
 
@@ -100,9 +98,11 @@ public class InputMethod.EnginesListView : Gtk.Grid {
     }
 
     private void update_engines_list () {
+        // Stores names of currently activated engines
+        string[] engine_full_names = {};
+
         listbox.get_children ().foreach ((listbox_child) => {
             listbox_child.destroy ();
-            engine_full_names = {};
         });
 
         // Add the language and the name of activated engines

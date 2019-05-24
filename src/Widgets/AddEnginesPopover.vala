@@ -27,7 +27,8 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
     construct {
         var search_entry = new Gtk.SearchEntry ();
         search_entry.margin = 6;
-        ///TRANSLATORS: This text appears in a search entry and tell users to type some search word in order to look for a input method engine which user want to add.
+        ///TRANSLATORS: This text appears in a search entry and tell users to type some search word
+        ///to look for a input method engine they want to add.
         ///It does not mean search engines in web browsers.
         search_entry.placeholder_text = _("Search engine");
 
