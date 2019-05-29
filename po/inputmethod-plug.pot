@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: inputmethod-plug\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-19 12:34+0900\n"
+"POT-Creation-Date: 2019-05-29 20:54+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/Views/EnginesListView.vala:59
+#: src/Views/EnginesListView.vala:43
 msgid "Add…"
 msgstr ""
 
-#: src/Views/EnginesListView.vala:62
+#: src/Views/EnginesListView.vala:46
 msgid "Remove"
 msgstr ""
 
@@ -73,40 +73,41 @@ msgstr ""
 msgid "Always show"
 msgstr ""
 
-#. TRANSLATORS: This text appears in a search entry and tell users to type some search word in order to look for a input method engine which user want to add.
+#. TRANSLATORS: This text appears in a search entry and tell users to type some search word
+#. to look for a input method engine they want to add.
 #. It does not mean search engines in web browsers.
-#: src/Widgets/AddEnginesPopover.vala:32
+#: src/Widgets/AddEnginesPopover.vala:33
 msgid "Search engine"
 msgstr ""
 
-#: src/Widgets/AddEnginesPopover.vala:80
+#: src/Widgets/AddEnginesPopover.vala:66
 msgid "Cancel"
 msgstr ""
 
-#: src/Widgets/AddEnginesPopover.vala:82
+#: src/Widgets/AddEnginesPopover.vala:68
 msgid "Add Engine"
 msgstr ""
 
-#: src/InputMethod.vala:28
+#: src/InputMethod.vala:27
 msgid "Input Method"
 msgstr ""
 
-#: src/InputMethod.vala:29
+#: src/InputMethod.vala:28
 msgid "Configure input method"
 msgstr ""
 
-#: src/InputMethod.vala:56
+#: src/InputMethod.vala:45
 msgid "Some changes will not take effect until you log out"
 msgstr ""
 
-#: src/InputMethod.vala:94
+#: src/InputMethod.vala:87
 msgid "Choose preferred input method"
 msgstr ""
 
-#: src/InputMethod.vala:95
+#: src/InputMethod.vala:88
 msgid "Switch engines"
 msgstr ""
 
-#: src/InputMethod.vala:96
+#: src/InputMethod.vala:89
 msgid "Show candidate window"
 msgstr ""
