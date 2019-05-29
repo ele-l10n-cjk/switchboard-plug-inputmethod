@@ -87,16 +87,24 @@ public class InputMethod.SettingsView : Gtk.Grid {
         // TODO: Support getting multiple shortcut keys like ibus-setup does
         string[] keyboard_shortcuts = InputMethod.Plug.ibus_general_settings.get_child ("hotkey").get_strv ("triggers");
 
+        string keyboard_shortcut = "";
         foreach (var ks in keyboard_shortcuts) {
             switch (ks) {
                 case "<Alt>space":
-                    return "alt-space";
+                    keyboard_shortcut = "alt-space";
+                    break;
                 case "<Shift>space":
-                    return "shift-space";
+                    keyboard_shortcut = "shift-space";
+                    break;
+                case "<Control>space":
+                    keyboard_shortcut = "ctl-space";
+                    break;
+                default:
+                    break;
             }
         }
 
-        return "ctl-space";
+        return keyboard_shortcut;
     }
 
     private void set_keyboard_shortcut (string combobox_id) {
