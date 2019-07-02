@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: inputmethod-plug\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-02 21:49+0900\n"
-"PO-Revision-Date: 2019-05-19 12:36+0900\n"
+"PO-Revision-Date: 2019-07-02 21:50+0900\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.2.2\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #: src/Views/EnginesListView.vala:43
 msgid "Add…"
@@ -83,16 +83,15 @@ msgstr "インプットメソッドを設定します"
 
 #: src/InputMethod.vala:84
 msgid "Your Input Method Is Not Supported"
-msgstr ""
+msgstr "お使いのインプットメソッドはサポートされていません"
 
 #: src/InputMethod.vala:85
-msgid ""
-"The default input method of the system is not configurable in this Plug."
-msgstr ""
+msgid "The default input method of the system is not configurable in this Plug."
+msgstr "システムのデフォルトのインプットメソッドは、このプラグでは設定できません。"
 
 #: src/InputMethod.vala:86
 msgid "Please make sure you use IBus as a default input method."
-msgstr ""
+msgstr "デフォルトのインプットメソッドが IBus かどうかを確認してください。"
 
 #: src/InputMethod.vala:114
 msgid "Switch engines"
@@ -101,21 +100,3 @@ msgstr "エンジンを切り替え"
 #: src/InputMethod.vala:115
 msgid "Show candidate window"
 msgstr "候補ウィンドウを表示"
-
-#~ msgid "Choose preferred input method:"
-#~ msgstr "使用するインプットメソッドを選択:"
-
-#~ msgid "Fcitx"
-#~ msgstr "Fcitx"
-
-#~ msgid "iBus"
-#~ msgstr "iBus"
-
-#~ msgid "This option is not available yet"
-#~ msgstr "このオプションはまだ利用できません"
-
-#~ msgid "Some changes will not take effect until you log out"
-#~ msgstr "一部の変更は、ログアウト後に反映されます"
-
-#~ msgid "Choose preferred input method"
-#~ msgstr "使用するインプットメソッドを選択"
