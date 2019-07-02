@@ -55,13 +55,6 @@ public class InputMethod.Plug : Switchboard.Plug {
 
     public override Gtk.Widget get_widget () {
         if (content_grid == null) {
-            var infobar = new Gtk.InfoBar ();
-            infobar.message_type = Gtk.MessageType.WARNING;
-            infobar.no_show_all = true;
-            var content = (Gtk.Container) infobar.get_content_area ();
-            var label = new Gtk.Label (_("Some changes will not take effect until you log out"));
-            content.add (label);
-
             var engines_list_view = new InputMethod.EnginesListView ();
             var settings_view = new InputMethod.SettingsView ();
 
@@ -79,14 +72,8 @@ public class InputMethod.Plug : Switchboard.Plug {
             stack.visible_child_name = (current_input_method == "ibus") ? "engines_view" : "unsupported_im_view";
 
             content_grid = new Gtk.Grid ();
-            content_grid.attach (infobar, 0, 0, 1, 1);
-            content_grid.attach (stack, 0, 1, 1, 1);
+            content_grid.attach (stack, 0, 0, 1, 1);
             content_grid.show_all ();
-
-            settings_view.on_im_changed.connect (() => {
-                infobar.no_show_all = false;
-                infobar.show_all ();
-            });
         }
 
         return content_grid;
@@ -124,7 +111,6 @@ public class InputMethod.Plug : Switchboard.Plug {
     // 'search' returns results like ("Keyboard → Behavior → Duration", "keyboard<sep>behavior")
     public override async Gee.TreeMap<string, string> search (string search) {
         var search_results = new Gee.TreeMap<string, string> ((GLib.CompareDataFunc<string>)strcmp, (Gee.EqualDataFunc<string>)str_equal);
-        search_results.set ("%s → %s".printf (display_name, _("Choose preferred input method")), "");
         search_results.set ("%s → %s".printf (display_name, _("Switch engines")), "");
         search_results.set ("%s → %s".printf (display_name, _("Show candidate window")), "");
         return search_results;

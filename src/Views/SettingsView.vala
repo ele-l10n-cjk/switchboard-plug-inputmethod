@@ -16,7 +16,6 @@
 */
 
 public class InputMethod.SettingsView : Gtk.Grid {
-    public signal void on_im_changed ();
 
     public SettingsView () {
         Object (
@@ -28,21 +27,6 @@ public class InputMethod.SettingsView : Gtk.Grid {
     }
 
     construct {
-        var choose_im_label = new Gtk.Label (_("Choose preferred input method:"));
-        choose_im_label.halign = Gtk.Align.END;
-        // This line should be removed when the plug supports switching input methods
-        choose_im_label.sensitive = false;
-
-        // TODO: Support switching input methods (this combobox is dummy and do nothing now)
-        var choose_im_combobox = new Gtk.ComboBoxText ();
-        choose_im_combobox.halign = Gtk.Align.START;
-        choose_im_combobox.append ("fcitx", _("Fcitx"));
-        choose_im_combobox.append ("ibus", _("iBus"));
-        choose_im_combobox.active_id = "ibus";
-        // The following two lines should be removed when the plug supports switching input methods
-        choose_im_combobox.sensitive = false;
-        choose_im_combobox.tooltip_text = _("This option is not available yet");
-
         var keyboard_shortcut_label = new Gtk.Label (_("Switch engines:"));
         keyboard_shortcut_label.halign = Gtk.Align.END;
 
@@ -63,16 +47,10 @@ public class InputMethod.SettingsView : Gtk.Grid {
         show_ibus_panel_combobox.append ("always-show", _("Always show"));
         show_ibus_panel_combobox.active = InputMethod.Plug.ibus_panel_settings.get_int ("show");
 
-        attach (choose_im_label, 0, 0, 1, 1);
-        attach (choose_im_combobox, 1, 0, 1, 1);
-        attach (keyboard_shortcut_label, 0, 1, 1, 1);
-        attach (keyboard_shortcut_combobox, 1, 1, 1, 1);
-        attach (show_ibus_panel_label, 0, 2, 1, 1);
-        attach (show_ibus_panel_combobox, 1, 2, 1, 1);
-
-        choose_im_combobox.changed.connect (() => {
-            on_im_changed ();
-        });
+        attach (keyboard_shortcut_label, 0, 0, 1, 1);
+        attach (keyboard_shortcut_combobox, 1, 0, 1, 1);
+        attach (show_ibus_panel_label, 0, 1, 1, 1);
+        attach (show_ibus_panel_combobox, 1, 1, 1, 1);
 
         keyboard_shortcut_combobox.changed.connect (() => {
             set_keyboard_shortcut (keyboard_shortcut_combobox.active_id);
