@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: inputmethod-plug\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-29 20:54+0900\n"
+"POT-Creation-Date: 2019-07-02 21:49+0900\n"
 "PO-Revision-Date: 2019-05-19 12:36+0900\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: none\n"
@@ -26,57 +26,41 @@ msgstr "追加…"
 msgid "Remove"
 msgstr "削除"
 
-#: src/Views/SettingsView.vala:31
-msgid "Choose preferred input method:"
-msgstr "使用するインプットメソッドを選択:"
-
-#: src/Views/SettingsView.vala:39
-msgid "Fcitx"
-msgstr "Fcitx"
-
-#: src/Views/SettingsView.vala:40
-msgid "iBus"
-msgstr "iBus"
-
-#: src/Views/SettingsView.vala:44
-msgid "This option is not available yet"
-msgstr "このオプションはまだ利用できません"
-
-#: src/Views/SettingsView.vala:46
+#: src/Views/SettingsView.vala:30
 msgid "Switch engines:"
 msgstr "エンジンを切り替え:"
 
-#: src/Views/SettingsView.vala:51
+#: src/Views/SettingsView.vala:35
 msgid "Alt + Space"
 msgstr "Alt + Space"
 
-#: src/Views/SettingsView.vala:52
+#: src/Views/SettingsView.vala:36
 msgid "Ctrl + Space"
 msgstr "Ctrl + Space"
 
-#: src/Views/SettingsView.vala:53
+#: src/Views/SettingsView.vala:37
 msgid "Shift + Space"
 msgstr "Shift + Space"
 
-#: src/Views/SettingsView.vala:56
+#: src/Views/SettingsView.vala:40
 msgid "Show candidate window:"
 msgstr "候補ウィンドウを表示:"
 
-#: src/Views/SettingsView.vala:61
+#: src/Views/SettingsView.vala:45
 msgid "Do not show"
 msgstr "表示しない"
 
-#: src/Views/SettingsView.vala:62
+#: src/Views/SettingsView.vala:46
 msgid "Auto hide"
 msgstr "自動的に隠す"
 
-#: src/Views/SettingsView.vala:63
+#: src/Views/SettingsView.vala:47
 msgid "Always show"
 msgstr "常に表示"
 
-#. TRANSLATORS: This text appears in a search entry and tell users to type some search word
-#. to look for a input method engine they want to add.
-#. It does not mean search engines in web browsers.
+#. /TRANSLATORS: This text appears in a search entry and tell users to type some search word
+#. /to look for a input method engine they want to add.
+#. /It does not mean search engines in web browsers.
 #: src/Widgets/AddEnginesPopover.vala:33
 msgid "Search engine"
 msgstr "エンジンを検索"
@@ -89,26 +73,49 @@ msgstr "キャンセル"
 msgid "Add Engine"
 msgstr "エンジンを追加"
 
-#: src/InputMethod.vala:27
+#: src/InputMethod.vala:44
 msgid "Input Method"
 msgstr "インプットメソッド"
 
-#: src/InputMethod.vala:28
+#: src/InputMethod.vala:45
 msgid "Configure input method"
 msgstr "インプットメソッドを設定します"
 
-#: src/InputMethod.vala:45
-msgid "Some changes will not take effect until you log out"
-msgstr "一部の変更は、ログアウト後に反映されます"
+#: src/InputMethod.vala:84
+msgid "Your Input Method Is Not Supported"
+msgstr ""
 
-#: src/InputMethod.vala:87
-msgid "Choose preferred input method"
-msgstr "使用するインプットメソッドを選択"
+#: src/InputMethod.vala:85
+msgid ""
+"The default input method of the system is not configurable in this Plug."
+msgstr ""
 
-#: src/InputMethod.vala:88
+#: src/InputMethod.vala:86
+msgid "Please make sure you use IBus as a default input method."
+msgstr ""
+
+#: src/InputMethod.vala:114
 msgid "Switch engines"
 msgstr "エンジンを切り替え"
 
-#: src/InputMethod.vala:89
+#: src/InputMethod.vala:115
 msgid "Show candidate window"
 msgstr "候補ウィンドウを表示"
+
+#~ msgid "Choose preferred input method:"
+#~ msgstr "使用するインプットメソッドを選択:"
+
+#~ msgid "Fcitx"
+#~ msgstr "Fcitx"
+
+#~ msgid "iBus"
+#~ msgstr "iBus"
+
+#~ msgid "This option is not available yet"
+#~ msgstr "このオプションはまだ利用できません"
+
+#~ msgid "Some changes will not take effect until you log out"
+#~ msgstr "一部の変更は、ログアウト後に反映されます"
+
+#~ msgid "Choose preferred input method"
+#~ msgstr "使用するインプットメソッドを選択"
