@@ -20,6 +20,23 @@ public class InputMethod.Plug : Switchboard.Plug {
     private Gtk.Grid content_grid;
     public static Settings ibus_general_settings;
     public static Settings ibus_panel_settings;
+    private string _current_input_method;
+    public string current_input_method {
+        get {
+            try {
+                // The second line of results of "im-config -m" should be the default input method
+                string im_config_result;
+                Process.spawn_command_line_sync ("im-config -m", out im_config_result, null, null);
+                string[] current_im = im_config_result.split ("\n");
+                _current_input_method = current_im[1]; // Fetch the second line
+            } catch (SpawnError e) {
+                warning (e.message);
+                _current_input_method = "unknown";
+            }
+
+            return _current_input_method;
+        }
+    }
 
     public Plug () {
         Object (category: Category.HARDWARE,
@@ -55,9 +72,15 @@ public class InputMethod.Plug : Switchboard.Plug {
             main_grid.attach (engines_list_view, 0, 0, 1, 1);
             main_grid.attach (settings_view, 1, 0, 1, 1);
 
+            var stack = new Gtk.Stack ();
+            stack.add_named (main_grid, "engines_view");
+            stack.add_named (unsupported_im_grid (), "unsupported_im_view");
+            stack.show_all ();
+            stack.visible_child_name = (current_input_method == "ibus") ? "engines_view" : "unsupported_im_view";
+
             content_grid = new Gtk.Grid ();
             content_grid.attach (infobar, 0, 0, 1, 1);
-            content_grid.attach (main_grid, 0, 1, 1, 1);
+            content_grid.attach (stack, 0, 1, 1, 1);
             content_grid.show_all ();
 
             settings_view.on_im_changed.connect (() => {
@@ -67,6 +90,23 @@ public class InputMethod.Plug : Switchboard.Plug {
         }
 
         return content_grid;
+    }
+
+    private Gtk.Grid unsupported_im_grid () {
+        var unsupported_warning = new Granite.Widgets.AlertView (
+            _("Your Input Method Is Not Supported"),
+            _("The default input method of the system is not configurable in this Plug.") + "\n" +
+            _("Please make sure you use IBus as a default input method."),
+            "dialog-warning"
+        );
+        unsupported_warning.get_style_context ().remove_class (Gtk.STYLE_CLASS_VIEW);
+        unsupported_warning.halign = Gtk.Align.CENTER;
+        unsupported_warning.valign = Gtk.Align.CENTER;
+
+        var grid = new Gtk.Grid ();
+        grid.attach (unsupported_warning, 0, 0, 1, 1);
+
+        return grid;
     }
 
     public override void shown () {
