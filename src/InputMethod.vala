@@ -24,11 +24,11 @@ public class InputMethod.Plug : Switchboard.Plug {
     public string current_input_method {
         get {
             try {
-                // The second line of results of "im-config -m" should be the default input method
+                // The third line of results of "im-config -m" should be the default input method
                 string im_config_result;
                 Process.spawn_command_line_sync ("im-config -m", out im_config_result, null, null);
                 string[] current_im = im_config_result.split ("\n");
-                _current_input_method = current_im[1]; // Fetch the second line
+                _current_input_method = current_im[2]; // Fetch the third line
             } catch (SpawnError e) {
                 warning (e.message);
                 _current_input_method = "unknown";
