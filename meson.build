@@ -14,7 +14,7 @@ shared_module(meson.project_name(),
     'src/Views/SettingsView.vala',
     'src/Widgets/AddEnginesPopover.vala',
     'src/AddEnginesList.vala',
-    'src/InputMethod.vala',
+    'src/Plug.vala',
     'src/Utils.vala',
     dependencies: [
         dependency('granite'),
