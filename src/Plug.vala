@@ -40,7 +40,7 @@ public class InputMethod.Plug : Switchboard.Plug {
 
     public Plug () {
         Object (category: Category.HARDWARE,
-                code_name: "hardware-pantheon-inputmethod",
+                code_name: "io.elementary.switchboard.inputmethod",
                 display_name: _("Input Method"),
                 description:_("Configure input method"),
                 icon: "preferences-desktop-ims",
