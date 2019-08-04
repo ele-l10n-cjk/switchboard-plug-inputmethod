@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: inputmethod-plug\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-04 19:00+0900\n"
-"PO-Revision-Date: 2019-07-02 21:50+0900\n"
+"PO-Revision-Date: 2019-08-04 19:01+0900\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -86,24 +86,20 @@ msgid "Your Input Method Is Not Supported"
 msgstr "お使いのインプットメソッドはサポートされていません"
 
 #: src/Plug.vala:85
-msgid ""
-"The default input method of the system is not configurable in this Plug."
-msgstr ""
-"システムのデフォルトのインプットメソッドは、このプラグでは設定できません。"
+msgid "The default input method of the system is not configurable in this Plug."
+msgstr "システムのデフォルトのインプットメソッドは、このプラグでは設定できません。"
 
 #: src/Plug.vala:86
 msgid "Please make sure you use IBus as a default input method."
 msgstr "デフォルトのインプットメソッドが IBus かどうかを確認してください。"
 
 #: src/Plug.vala:114
-#, fuzzy
 msgid "Add engines"
 msgstr "エンジンを追加"
 
 #: src/Plug.vala:115
-#, fuzzy
 msgid "Remove engines"
-msgstr "削除"
+msgstr "エンジンを削除"
 
 #: src/Plug.vala:116
 msgid "Switch engines"
