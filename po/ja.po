@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: inputmethod-plug\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-02 21:49+0900\n"
+"POT-Creation-Date: 2019-08-04 19:00+0900\n"
 "PO-Revision-Date: 2019-07-02 21:50+0900\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: none\n"
@@ -58,9 +58,9 @@ msgstr "自動的に隠す"
 msgid "Always show"
 msgstr "常に表示"
 
-#. /TRANSLATORS: This text appears in a search entry and tell users to type some search word
-#. /to look for a input method engine they want to add.
-#. /It does not mean search engines in web browsers.
+#. TRANSLATORS: This text appears in a search entry and tell users to type some search word
+#. to look for a input method engine they want to add.
+#. It does not mean search engines in web browsers.
 #: src/Widgets/AddEnginesPopover.vala:33
 msgid "Search engine"
 msgstr "エンジンを検索"
@@ -73,30 +73,42 @@ msgstr "キャンセル"
 msgid "Add Engine"
 msgstr "エンジンを追加"
 
-#: src/InputMethod.vala:44
+#: src/Plug.vala:44
 msgid "Input Method"
 msgstr "インプットメソッド"
 
-#: src/InputMethod.vala:45
+#: src/Plug.vala:45
 msgid "Configure input method"
 msgstr "インプットメソッドを設定します"
 
-#: src/InputMethod.vala:84
+#: src/Plug.vala:84
 msgid "Your Input Method Is Not Supported"
 msgstr "お使いのインプットメソッドはサポートされていません"
 
-#: src/InputMethod.vala:85
-msgid "The default input method of the system is not configurable in this Plug."
-msgstr "システムのデフォルトのインプットメソッドは、このプラグでは設定できません。"
+#: src/Plug.vala:85
+msgid ""
+"The default input method of the system is not configurable in this Plug."
+msgstr ""
+"システムのデフォルトのインプットメソッドは、このプラグでは設定できません。"
 
-#: src/InputMethod.vala:86
+#: src/Plug.vala:86
 msgid "Please make sure you use IBus as a default input method."
 msgstr "デフォルトのインプットメソッドが IBus かどうかを確認してください。"
 
-#: src/InputMethod.vala:114
+#: src/Plug.vala:114
+#, fuzzy
+msgid "Add engines"
+msgstr "エンジンを追加"
+
+#: src/Plug.vala:115
+#, fuzzy
+msgid "Remove engines"
+msgstr "削除"
+
+#: src/Plug.vala:116
 msgid "Switch engines"
 msgstr "エンジンを切り替え"
 
-#: src/InputMethod.vala:115
+#: src/Plug.vala:117
 msgid "Show candidate window"
 msgstr "候補ウィンドウを表示"

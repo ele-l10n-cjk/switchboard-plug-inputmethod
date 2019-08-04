@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: inputmethod-plug\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-02 21:49+0900\n"
+"POT-Creation-Date: 2019-08-04 19:00+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,9 +57,9 @@ msgstr ""
 msgid "Always show"
 msgstr ""
 
-#. /TRANSLATORS: This text appears in a search entry and tell users to type some search word
-#. /to look for a input method engine they want to add.
-#. /It does not mean search engines in web browsers.
+#. TRANSLATORS: This text appears in a search entry and tell users to type some search word
+#. to look for a input method engine they want to add.
+#. It does not mean search engines in web browsers.
 #: src/Widgets/AddEnginesPopover.vala:33
 msgid "Search engine"
 msgstr ""
@@ -72,31 +72,39 @@ msgstr ""
 msgid "Add Engine"
 msgstr ""
 
-#: src/InputMethod.vala:44
+#: src/Plug.vala:44
 msgid "Input Method"
 msgstr ""
 
-#: src/InputMethod.vala:45
+#: src/Plug.vala:45
 msgid "Configure input method"
 msgstr ""
 
-#: src/InputMethod.vala:84
+#: src/Plug.vala:84
 msgid "Your Input Method Is Not Supported"
 msgstr ""
 
-#: src/InputMethod.vala:85
+#: src/Plug.vala:85
 msgid ""
 "The default input method of the system is not configurable in this Plug."
 msgstr ""
 
-#: src/InputMethod.vala:86
+#: src/Plug.vala:86
 msgid "Please make sure you use IBus as a default input method."
 msgstr ""
 
-#: src/InputMethod.vala:114
+#: src/Plug.vala:114
+msgid "Add engines"
+msgstr ""
+
+#: src/Plug.vala:115
+msgid "Remove engines"
+msgstr ""
+
+#: src/Plug.vala:116
 msgid "Switch engines"
 msgstr ""
 
-#: src/InputMethod.vala:115
+#: src/Plug.vala:117
 msgid "Show candidate window"
 msgstr ""
