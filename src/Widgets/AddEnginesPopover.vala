@@ -16,6 +16,8 @@
 */
 
 public class InputMethod.AddEnginesPopover : Gtk.Popover {
+    private GLib.ListStore liststore;
+    private Gtk.ListBox listbox;
     public signal void add_engine (string new_engine);
 
     public AddEnginesPopover (Gtk.Widget relative_object) {
@@ -32,9 +34,9 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
         ///It does not mean search engines in web browsers.
         search_entry.placeholder_text = _("Search engine");
 
-        var liststore = new GLib.ListStore (Type.OBJECT);
+        liststore = new GLib.ListStore (Type.OBJECT);
 
-        var listbox = new Gtk.ListBox ();
+        listbox = new Gtk.ListBox ();
 
         List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
 
@@ -89,6 +91,15 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
 
         add (grid);
 
+        listbox.button_press_event.connect ((event) => {
+            if (event.type == Gdk.EventType.DOUBLE_BUTTON_PRESS) {
+                trigger_add_engine ();
+                return false;
+            }
+
+            return false;
+        });
+
         listbox.set_filter_func ((list_box_row) => {
             var item = (AddEnginesList) liststore.get_item (list_box_row.get_index ());
             return search_entry.text.down () in item.engine_full_name.down ();
@@ -103,16 +114,20 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
         });
 
         add_button.clicked.connect (() => {
-            int index = listbox.get_selected_row ().get_index ();
-
-            // If the engine trying to add is already active, do not add it
-            foreach (var active_engine in InputMethod.Utils.active_engines) {
-                if (active_engine == (((AddEnginesList) liststore.get_item (index)).engine_id)) {
-                    popdown ();
-                    return;
-                }
-            }
-            add_engine (((AddEnginesList) liststore.get_item (index)).engine_id);
+            trigger_add_engine ();
         });
+    }
+
+    private void trigger_add_engine () {
+        int index = listbox.get_selected_row ().get_index ();
+
+        // If the engine trying to add is already active, do not add it
+        foreach (var active_engine in InputMethod.Utils.active_engines) {
+            if (active_engine == (((AddEnginesList) liststore.get_item (index)).engine_id)) {
+                popdown ();
+                return;
+            }
+        }
+        add_engine (((AddEnginesList) liststore.get_item (index)).engine_id);
     }
 }
