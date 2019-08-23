@@ -37,3 +37,19 @@ Run `meson` to configure the build environment and then `ninja` to build
 To install, use `ninja install`
 
     sudo ninja install
+
+## Contributing
+
+There are many ways you can contribute, even if you don't know how to code.
+
+### Reporting Bugs or Suggesting Improvements
+
+Simply [create a new issue](https://github.com/ele-l10n-cjk/switchboard-plug-inputmethod/issues/new) describing your problem and how to reproduce or your suggestion. If you are not used to do, [this section](https://elementary.io/docs/code/reference#reporting-bugs) is for you.
+
+### Writing Some Code
+
+We follow the [coding style of elementary OS](https://elementary.io/docs/code/reference#code-style) and [its Human Interface Guidelines](https://elementary.io/docs/human-interface-guidelines#human-interface-guidelines), please try to respect them.
+
+### Translating This App
+
+I accept translations through Pull Requests. If you're not sure how to do, [the guideline I made](po/README.md) might be helpful.
