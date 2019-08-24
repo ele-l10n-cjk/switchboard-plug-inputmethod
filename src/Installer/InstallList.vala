@@ -80,5 +80,9 @@ namespace InputMethod {
                     assert_not_reached ();
             }
         }
+
+        public static InstallList[] get_all () {
+            return { JA, KO, ZH_CN, ZH_HK, ZH_SG, ZH_TW };
+        }
     }
 }

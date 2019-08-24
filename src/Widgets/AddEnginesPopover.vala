@@ -65,6 +65,8 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
         scrolled.expand = true;
         scrolled.add (listbox);
 
+        var install_button = new Gtk.Button.with_label (_("Install unlisted engines…"));
+
         var cancel_button = new Gtk.Button.with_label (_("Cancel"));
 
         var add_button = new Gtk.Button.with_label (_("Add Engine"));
@@ -75,8 +77,9 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
         buttons_grid.column_spacing = 6;
         buttons_grid.hexpand = true;
         buttons_grid.halign = Gtk.Align.END;
-        buttons_grid.attach (cancel_button, 0, 0, 1, 1);
-        buttons_grid.attach (add_button, 1, 0, 1, 1);
+        buttons_grid.attach (install_button, 0, 0, 1, 1);
+        buttons_grid.attach (cancel_button, 1, 0, 1, 1);
+        buttons_grid.attach (add_button, 2, 0, 1, 1);
 
         var grid = new Gtk.Grid ();
         grid.margin = 6;
@@ -107,6 +110,14 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
 
         search_entry.search_changed.connect (() => {
             listbox.invalidate_filter ();
+        });
+
+        install_button.clicked.connect (() => {
+            popdown ();
+
+            var install_dialog = new InstallEngineDialog ((Gtk.Window) get_toplevel ());
+            install_dialog.run ();
+            install_dialog.destroy ();
         });
 
         cancel_button.clicked.connect (() => {
