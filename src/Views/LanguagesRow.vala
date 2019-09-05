@@ -15,38 +15,29 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-public class InputMethod.EnginesRow : Gtk.ListBoxRow {
-    public bool selected { get; set; }
-    public string engine_name { get; construct; }
+public class InputMethod.LanguagesRow : Gtk.ListBoxRow {
+    public string lang_name { get; construct; }
 
-    public EnginesRow (string engine_name) {
+    public LanguagesRow (string lang_name) {
         Object (
-            engine_name: engine_name
+            lang_name: lang_name
         );
     }
 
     construct {
-        var label = new Gtk.Label (engine_name);
+        var label = new Gtk.Label (lang_name);
         label.hexpand = true;
         label.halign = Gtk.Align.START;
 
-        var selection_icon = new Gtk.Image.from_icon_name ("object-select-symbolic", Gtk.IconSize.MENU);
-        selection_icon.no_show_all = true;
-        selection_icon.visible = false;
+        var caret = new Gtk.Image.from_icon_name ("pan-end-symbolic", Gtk.IconSize.MENU);
 
         var grid = new Gtk.Grid ();
-        grid.column_spacing = 6;
         grid.margin = 3;
         grid.margin_start = 6;
         grid.margin_end = 6;
-
         grid.add (label);
-        grid.add (selection_icon);
+        grid.add (caret);
 
         add (grid);
-
-        notify["selected"].connect (() => {
-            selection_icon.visible = selected;
-        });
     }
 }

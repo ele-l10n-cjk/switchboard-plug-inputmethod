@@ -27,14 +27,14 @@ public class InputMethod.InstallEngineDialog : Granite.MessageDialog {
     }
 
     construct {
-        var engines_list = new Gtk.ListBox ();
-        engines_list.activate_on_single_click = true;
-        engines_list.expand = true;
-        engines_list.selection_mode = Gtk.SelectionMode.NONE;
+        var languages_list = new Gtk.ListBox ();
+        languages_list.activate_on_single_click = true;
+        languages_list.expand = true;
+        languages_list.selection_mode = Gtk.SelectionMode.NONE;
 
-        foreach (var lang in InstallList.get_all ()) {
-            var engine = new EnginesRow (lang.get_name ());
-            engines_list.add (engine);
+        foreach (var language in InstallList.get_all ()) {
+            var lang = new LanguagesRow (language.get_name ());
+            languages_list.add (lang);
         }
 
         var back_button = new Gtk.Button.with_label (_("Languages"));
@@ -48,10 +48,34 @@ public class InputMethod.InstallEngineDialog : Granite.MessageDialog {
         language_header.pack_start (back_button);
         language_header.set_center_widget (language_title);
 
+        var listbox = new Gtk.ListBox ();
+        listbox.expand = true;
+
+        foreach (var language in InstallList.get_all ()) {
+            foreach (var engine in language.get_components ()) {
+                listbox.add (new EnginesRow (engine));
+            }
+        }
+
+        var scrolled = new Gtk.ScrolledWindow (null, null);
+        scrolled.add (listbox);
+
+        var engine_list_grid = new Gtk.Grid ();
+        engine_list_grid.orientation = Gtk.Orientation.VERTICAL;
+        engine_list_grid.get_style_context ().add_class (Gtk.STYLE_CLASS_VIEW);
+        engine_list_grid.add (language_header);
+        engine_list_grid.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
+        engine_list_grid.add (scrolled);
+
+        var stack = new Gtk.Stack ();
+        stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT;
+        stack.add (languages_list);
+        stack.add (engine_list_grid);
+
         var frame = new Gtk.Frame (null);
         frame.margin_top = 24;
         frame.margin_bottom = 24;
-        frame.add (engines_list);
+        frame.add (stack);
 
         custom_bin.add (frame);
 
@@ -59,6 +83,26 @@ public class InputMethod.InstallEngineDialog : Granite.MessageDialog {
         install_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
 
         show_all ();
+
+        languages_list.row_activated.connect ((row) => {
+            stack.visible_child = engine_list_grid;
+            language_title.label = ((LanguagesRow) row).lang_name;
+            var adjustment = scrolled.get_vadjustment ();
+            adjustment.set_value (adjustment.lower);
+        });
+
+        back_button.clicked.connect (() => {
+            stack.visible_child = languages_list;
+            install_button.sensitive = false;
+        });
+
+        listbox.selected_rows_changed.connect (() => {
+            foreach (var engines_row in listbox.get_children ()) {
+                ((EnginesRow) engines_row).selected = false;
+            }
+            ((EnginesRow) listbox.get_selected_row ()).selected = true;
+            install_button.sensitive = true;
+        });
 
         response.connect ((response_id) => {
             if (response_id == Gtk.ResponseType.OK) {
