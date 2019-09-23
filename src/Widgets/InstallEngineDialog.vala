@@ -16,7 +16,7 @@
 */
 
 public class InputMethod.InstallEngineDialog : Granite.MessageDialog {
-    private InputMethod.InstallList? engines_filter;
+    private InstallList? engines_filter;
 
     public InstallEngineDialog (Gtk.Window parent) {
         Object (
