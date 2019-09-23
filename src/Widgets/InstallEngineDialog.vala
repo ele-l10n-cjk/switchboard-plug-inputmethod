@@ -73,12 +73,12 @@ public class InputMethod.InstallEngineDialog : Granite.MessageDialog {
 
         var stack = new Gtk.Stack ();
         stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT;
+        stack.width_request = 300;
+        stack.height_request = 200;
         stack.add (languages_list);
         stack.add (engine_list_grid);
 
         var frame = new Gtk.Frame (null);
-        frame.margin_top = 24;
-        frame.margin_bottom = 24;
         frame.add (stack);
 
         custom_bin.add (frame);
