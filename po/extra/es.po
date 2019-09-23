@@ -1,0 +1,27 @@
+# Spanish translations for inputmethod-plug package.
+# Copyright (C) 2019 THE inputmethod-plug'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the inputmethod-plug package.
+# Adolfo Jayme Barrientos <fitojb@ubuntu.com>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-29 20:55+0900\n"
+"PO-Revision-Date: 2019-09-08 06:09-0500\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
+"Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es\n"
+
+#: data/io.elementary.switchboard.inputmethod.appdata.xml.in:5
+msgid "Input Method"
+msgstr "Método de entrada"
+
+#: data/io.elementary.switchboard.inputmethod.appdata.xml.in:6
+msgid "Configure input method"
+msgstr "Configurar el método de entrada"
