@@ -19,10 +19,7 @@ namespace InputMethod {
     public enum InstallList {
         JA,
         KO,
-        ZH_CN,
-        ZH_HK,
-        ZH_SG,
-        ZH_TW;
+        ZH;
 
         public string get_name () {
             switch (this) {
@@ -30,14 +27,8 @@ namespace InputMethod {
                     return _("Japanese");
                 case KO:
                     return _("Korean");
-                case ZH_CN:
-                    return _("Chinese (China)");
-                case ZH_HK:
-                    return _("Chinese (Hong Kong)");
-                case ZH_SG:
-                    return _("Chinese (Singapore)");
-                case ZH_TW:
-                    return _("Chinese (Taiwan)");
+                case ZH:
+                    return _("Chinese");
                 default:
                     assert_not_reached ();
             }
@@ -49,14 +40,8 @@ namespace InputMethod {
                     return "ja";
                 case KO:
                     return "ko";
-                case ZH_CN:
-                    return "zh_CN";
-                case ZH_HK:
-                    return "zh_HK";
-                case ZH_SG:
-                    return "zh_SG";
-                case ZH_TW:
-                    return "zh_TW";
+                case ZH:
+                    return "zh";
                 default:
                     assert_not_reached ();
             }
@@ -68,14 +53,8 @@ namespace InputMethod {
                     return { "ibus-mozc" };
                 case KO:
                     return { "ibus-hangul" };
-                case ZH_CN:
-                    return { "ibus-pinyin" };
-                case ZH_HK:
-                    return { "ibus-cangjie" };
-                case ZH_SG:
-                    return { "ibus-pinyin" };
-                case ZH_TW:
-                    return { "ibus-chewing" };
+                case ZH:
+                    return { "ibus-cangjie", "ibus-chewing", "ibus-pinyin" };
                 default:
                     assert_not_reached ();
             }
@@ -87,21 +66,19 @@ namespace InputMethod {
                     return JA;
                 case "ibus-hangul":
                     return KO;
-                case "ibus-pinyin":
-                    return ZH_CN;
                 case "ibus-cangjie":
-                    return ZH_HK;
-                //  case "ibus-pinyin":
-                //      return ZH_SG;
+                    return ZH;
                 case "ibus-chewing":
-                    return ZH_TW;
+                    return ZH;
+                case "ibus-pinyin":
+                    return ZH;
                 default:
                     assert_not_reached ();
             }
         }
 
         public static InstallList[] get_all () {
-            return { JA, KO, ZH_CN, ZH_HK, ZH_SG, ZH_TW };
+            return { JA, KO, ZH };
         }
     }
 }
