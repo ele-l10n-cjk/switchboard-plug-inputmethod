@@ -81,6 +81,25 @@ namespace InputMethod {
             }
         }
 
+        public static InstallList get_language_from_engine_name (string engine_name) {
+            switch (engine_name) {
+                case "ibus-mozc":
+                    return JA;
+                case "ibus-hangul":
+                    return KO;
+                case "ibus-pinyin":
+                    return ZH_CN;
+                case "ibus-cangjie":
+                    return ZH_HK;
+                //  case "ibus-pinyin":
+                //      return ZH_SG;
+                case "ibus-chewing":
+                    return ZH_TW;
+                default:
+                    assert_not_reached ();
+            }
+        }
+
         public static InstallList[] get_all () {
             return { JA, KO, ZH_CN, ZH_HK, ZH_SG, ZH_TW };
         }

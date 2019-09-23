@@ -16,6 +16,8 @@
 */
 
 public class InputMethod.InstallEngineDialog : Granite.MessageDialog {
+    private InputMethod.InstallList? engines_filter;
+
     public InstallEngineDialog (Gtk.Window parent) {
         Object (
             primary_text: _("Choose the Engine to Install"),
@@ -33,7 +35,7 @@ public class InputMethod.InstallEngineDialog : Granite.MessageDialog {
         languages_list.selection_mode = Gtk.SelectionMode.NONE;
 
         foreach (var language in InstallList.get_all ()) {
-            var lang = new LanguagesRow (language.get_name ());
+            var lang = new LanguagesRow (language);
             languages_list.add (lang);
         }
 
@@ -50,6 +52,8 @@ public class InputMethod.InstallEngineDialog : Granite.MessageDialog {
 
         var listbox = new Gtk.ListBox ();
         listbox.expand = true;
+        listbox.set_filter_func (filter_function);
+        listbox.set_sort_func (sort_function);
 
         foreach (var language in InstallList.get_all ()) {
             foreach (var engine in language.get_components ()) {
@@ -86,7 +90,9 @@ public class InputMethod.InstallEngineDialog : Granite.MessageDialog {
 
         languages_list.row_activated.connect ((row) => {
             stack.visible_child = engine_list_grid;
-            language_title.label = ((LanguagesRow) row).lang_name;
+            language_title.label = ((LanguagesRow) row).language.get_name ();
+            engines_filter = ((LanguagesRow) row).language;
+            listbox.invalidate_filter ();
             var adjustment = scrolled.get_vadjustment ();
             adjustment.set_value (adjustment.lower);
         });
@@ -109,5 +115,19 @@ public class InputMethod.InstallEngineDialog : Granite.MessageDialog {
                 // Install the selected engine
             }
         });
+    }
+
+    [CCode (instance_pos = -1)]
+    private bool filter_function (Gtk.ListBoxRow row) {
+        if (InstallList.get_language_from_engine_name (((EnginesRow) row).engine_name) == engines_filter) {
+            return true;
+        }
+
+        return false;
+    }
+
+    [CCode (instance_pos = -1)]
+    private int sort_function (Gtk.ListBoxRow row1, Gtk.ListBoxRow row2) {
+        return ((EnginesRow) row1).engine_name.collate (((EnginesRow) row1).engine_name);
     }
 }

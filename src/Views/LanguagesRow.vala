@@ -16,16 +16,16 @@
 */
 
 public class InputMethod.LanguagesRow : Gtk.ListBoxRow {
-    public string lang_name { get; construct; }
+    public InputMethod.InstallList language { get; construct; }
 
-    public LanguagesRow (string lang_name) {
+    public LanguagesRow (InputMethod.InstallList language) {
         Object (
-            lang_name: lang_name
+            language: language
         );
     }
 
     construct {
-        var label = new Gtk.Label (lang_name);
+        var label = new Gtk.Label (language.get_name ());
         label.hexpand = true;
         label.halign = Gtk.Align.START;
 
