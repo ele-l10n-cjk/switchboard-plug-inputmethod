@@ -1,3 +1,9 @@
+switchboard-plug-inputmethod (0.1.7) bionic; urgency=low
+
+  * New upstream release.
+
+ -- Ryo Nakano <ryonakaknock3@gmail.com>  Sun, 06 Oct 2019 08:03:29 +0900
+
 switchboard-plug-inputmethod (0.1.6) bionic; urgency=low
 
   * New upstream release.
