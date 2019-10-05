@@ -1,4 +1,4 @@
-project('inputmethod', 'vala', 'c', version: '0.1.7')
+project('inputmethod', 'vala', 'c', version: '0.1.8')
 
 switchboard_dep = dependency('switchboard-2.0')
 ibus_dep = dependency('ibus-1.0')
