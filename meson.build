@@ -1,6 +1,7 @@
-project('inputmethod', 'vala', 'c', version: '0.1.5')
+project('inputmethod', 'vala', 'c', version: '0.1.7')
 
 switchboard_dep = dependency('switchboard-2.0')
+ibus_dep = dependency('ibus-1.0')
 gettext_name = meson.project_name() + '-plug'
 pkg_data_dir = join_paths(switchboard_dep.get_pkgconfig_variable('plugsdir'), 'personal', 'pantheon-locale')
 
@@ -20,6 +21,11 @@ conf_file = configure_file(
     output: '@BASENAME@'
 )
 
+vala_args = []
+if(ibus_dep.version().version_compare('>=1.5.19'))
+    vala_args += ['--define=IBUS_1_5_19']
+endif
+
 shared_module(meson.project_name(),
     conf_file,
     'src/Installer/aptd-client.vala',
@@ -34,13 +40,14 @@ shared_module(meson.project_name(),
     'src/AddEnginesList.vala',
     'src/Plug.vala',
     'src/Utils.vala',
+    vala_args,
     dependencies: [
         dependency('granite'),
         dependency('gtk+-3.0'),
-        dependency('ibus-1.0'),
         dependency('gnome-desktop-3.0'),
         dependency('polkit-gobject-1'),
         meson.get_compiler('vala').find_library('posix'),
+        ibus_dep,
         switchboard_dep
     ],
     install: true,

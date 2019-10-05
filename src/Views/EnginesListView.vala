@@ -17,7 +17,11 @@
 
 public class InputMethod.EnginesListView : Gtk.Grid {
     // Stores all installed engines
+#if IBUS_1_5_19
+    private List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
+#else
     private List<weak IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
+#endif
 
     private Gtk.ListBox listbox;
     private Gtk.Button remove_button;
