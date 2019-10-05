@@ -112,7 +112,7 @@ public class InputMethod.InstallEngineDialog : Granite.MessageDialog {
 
         response.connect ((response_id) => {
             if (response_id == Gtk.ResponseType.OK) {
-                // Install the selected engine
+                Installer.UbuntuInstaller.get_default ().install (((EnginesRow) listbox.get_selected_row ()).engine_name);
             }
         });
     }

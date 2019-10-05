@@ -38,6 +38,8 @@ public class InputMethod.Plug : Switchboard.Plug {
         }
     }
 
+    public Installer.UbuntuInstaller installer { get; private set; }
+
     public Plug () {
         Object (category: Category.HARDWARE,
                 code_name: "io.elementary.switchboard.inputmethod",
@@ -51,6 +53,10 @@ public class InputMethod.Plug : Switchboard.Plug {
     static construct {
         ibus_general_settings = new Settings ("org.freedesktop.ibus.general");
         ibus_panel_settings = new Settings ("org.freedesktop.ibus.panel");
+    }
+
+    construct {
+        installer = Installer.UbuntuInstaller.get_default ();
     }
 
     public override Gtk.Widget get_widget () {

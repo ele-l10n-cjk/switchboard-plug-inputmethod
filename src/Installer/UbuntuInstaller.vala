@@ -61,10 +61,10 @@ public class InputMethod.Installer.UbuntuInstaller : Object {
         }
     }
 
-    public void install (string language) {
+    public void install (string engine_name) {
         transaction_mode = TransactionMode.INSTALL;
-        var packages = get_remaining_packages_for_language (language);
-        transaction_language_code = language;
+        string[] packages = {};
+        packages += engine_name;
 
         foreach (var packet in packages) {
             message ("Packet: %s", packet);
@@ -73,7 +73,7 @@ public class InputMethod.Installer.UbuntuInstaller : Object {
         aptd.install_packages.begin (packages, (obj, res) => {
             try {
                 var transaction_id = aptd.install_packages.end (res);
-                transactions.@set (transaction_id, "i-" + language);
+                transactions.@set (transaction_id, "i-" + engine_name);
                 run_transaction (transaction_id);
             } catch (Error e) {
                 warning ("Could not queue downloads: %s", e.message);
