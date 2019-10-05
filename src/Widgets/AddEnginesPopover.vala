@@ -39,9 +39,9 @@ public class InputMethod.AddEnginesPopover : Gtk.Popover {
         listbox = new Gtk.ListBox ();
 
 #if IBUS_1_5_19
-    List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
+        List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
 #else
-    List<weak IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
+        List<weak IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
 #endif
 
         foreach (var engine in engines) {
