@@ -1,4 +1,4 @@
-project('inputmethod', 'vala', 'c', version: '0.1.7')
+project('inputmethod', 'vala', 'c', version: '0.1.8')
 
 switchboard_dep = dependency('switchboard-2.0')
 ibus_dep = dependency('ibus-1.0')
@@ -21,9 +21,8 @@ conf_file = configure_file(
     output: '@BASENAME@'
 )
 
-vala_args = []
 if(ibus_dep.version().version_compare('>=1.5.19'))
-    vala_args += ['--define=IBUS_1_5_19']
+    add_project_arguments(['--define', 'IBUS_1_5_19'], language: 'vala')
 endif
 
 shared_module(meson.project_name(),
@@ -40,7 +39,6 @@ shared_module(meson.project_name(),
     'src/AddEnginesList.vala',
     'src/Plug.vala',
     'src/Utils.vala',
-    vala_args,
     dependencies: [
         dependency('granite'),
         dependency('gtk+-3.0'),
