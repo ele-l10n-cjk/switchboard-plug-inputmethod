@@ -34,19 +34,6 @@ namespace InputMethod {
             }
         }
 
-        public string get_lang_code () {
-            switch (this) {
-                case JA:
-                    return "ja";
-                case KO:
-                    return "ko";
-                case ZH:
-                    return "zh";
-                default:
-                    assert_not_reached ();
-            }
-        }
-
         public string[] get_components () {
             switch (this) {
                 case JA:
