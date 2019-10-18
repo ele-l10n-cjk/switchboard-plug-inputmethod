@@ -85,6 +85,7 @@ public class InputMethod.InstallEngineDialog : Granite.MessageDialog {
 
         var install_button = add_button (_("Install"), Gtk.ResponseType.OK);
         install_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        install_button.sensitive = false;
 
         show_all ();
 
