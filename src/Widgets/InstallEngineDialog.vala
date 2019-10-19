@@ -20,7 +20,7 @@ public class InputMethod.InstallEngineDialog : Granite.MessageDialog {
 
     public InstallEngineDialog (Gtk.Window parent) {
         Object (
-            primary_text: _("Choose the Engine to Install"),
+            primary_text: _("Choose an engine to install"),
             secondary_text: _("Select an engine from the list to install and use."),
             image_icon: new ThemedIcon ("dialog-information"),
             transient_for: parent,
