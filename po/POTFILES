@@ -1,4 +1,6 @@
+src/Installer/InstallList.vala
 src/Views/EnginesListView.vala
 src/Views/SettingsView.vala
 src/Widgets/AddEnginesPopover.vala
+src/Widgets/InstallEngineDialog.vala
 src/Plug.vala
