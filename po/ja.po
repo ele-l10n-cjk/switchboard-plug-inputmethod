@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: inputmethod-plug\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-04 19:00+0900\n"
+"POT-Creation-Date: 2019-10-20 11:15+0900\n"
 "PO-Revision-Date: 2019-08-04 19:01+0900\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: none\n"
@@ -18,11 +18,53 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.3\n"
 
-#: src/Views/EnginesListView.vala:43
+#: src/Dialogs/InstallEngineDialog.vala:23
+msgid "Choose an engine to install"
+msgstr ""
+
+#: src/Dialogs/InstallEngineDialog.vala:24
+msgid "Select an engine from the list to install and use."
+msgstr ""
+
+#: src/Dialogs/InstallEngineDialog.vala:42
+msgid "Languages"
+msgstr ""
+
+#: src/Dialogs/InstallEngineDialog.vala:86
+msgid "Install"
+msgstr ""
+
+#: src/Dialogs/ProgressDialog.vala:46
+#, c-format
+msgid "Installing %s"
+msgstr ""
+
+#: src/Dialogs/ProgressDialog.vala:49
+#, fuzzy, c-format
+msgid "Removing %s"
+msgstr "エンジンを削除"
+
+#: src/Dialogs/ProgressDialog.vala:58 src/Widgets/AddEnginesPopover.vala:74
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: src/Installer/InstallList.vala:26
+msgid "Japanese"
+msgstr ""
+
+#: src/Installer/InstallList.vala:28
+msgid "Korean"
+msgstr ""
+
+#: src/Installer/InstallList.vala:30
+msgid "Chinese"
+msgstr ""
+
+#: src/Views/EnginesListView.vala:47
 msgid "Add…"
 msgstr "追加…"
 
-#: src/Views/EnginesListView.vala:46
+#: src/Views/EnginesListView.vala:50
 msgid "Remove"
 msgstr "削除"
 
@@ -58,53 +100,55 @@ msgstr "自動的に隠す"
 msgid "Always show"
 msgstr "常に表示"
 
-#. TRANSLATORS: This text appears in a search entry and tell users to type some search word
-#. to look for a input method engine they want to add.
-#. It does not mean search engines in web browsers.
-#: src/Widgets/AddEnginesPopover.vala:33
+#. /TRANSLATORS: This text appears in a search entry and tell users to type some search word
+#. /to look for a input method engine they want to add.
+#. /It does not mean search engines in web browsers.
+#: src/Widgets/AddEnginesPopover.vala:35
 msgid "Search engine"
 msgstr "エンジンを検索"
 
-#: src/Widgets/AddEnginesPopover.vala:66
-msgid "Cancel"
-msgstr "キャンセル"
+#: src/Widgets/AddEnginesPopover.vala:72
+msgid "Install unlisted engines…"
+msgstr ""
 
-#: src/Widgets/AddEnginesPopover.vala:68
+#: src/Widgets/AddEnginesPopover.vala:76
 msgid "Add Engine"
 msgstr "エンジンを追加"
 
-#: src/Plug.vala:44
+#: src/Plug.vala:47
 msgid "Input Method"
 msgstr "インプットメソッド"
 
-#: src/Plug.vala:45
+#: src/Plug.vala:48
 msgid "Configure input method"
 msgstr "インプットメソッドを設定します"
 
-#: src/Plug.vala:84
+#: src/Plug.vala:104
 msgid "Your Input Method Is Not Supported"
 msgstr "お使いのインプットメソッドはサポートされていません"
 
-#: src/Plug.vala:85
-msgid "The default input method of the system is not configurable in this Plug."
-msgstr "システムのデフォルトのインプットメソッドは、このプラグでは設定できません。"
+#: src/Plug.vala:105
+msgid ""
+"The default input method of the system is not configurable in this Plug."
+msgstr ""
+"システムのデフォルトのインプットメソッドは、このプラグでは設定できません。"
 
-#: src/Plug.vala:86
+#: src/Plug.vala:106
 msgid "Please make sure you use IBus as a default input method."
 msgstr "デフォルトのインプットメソッドが IBus かどうかを確認してください。"
 
-#: src/Plug.vala:114
+#: src/Plug.vala:134
 msgid "Add engines"
 msgstr "エンジンを追加"
 
-#: src/Plug.vala:115
+#: src/Plug.vala:135
 msgid "Remove engines"
 msgstr "エンジンを削除"
 
-#: src/Plug.vala:116
+#: src/Plug.vala:136
 msgid "Switch engines"
 msgstr "エンジンを切り替え"
 
-#: src/Plug.vala:117
+#: src/Plug.vala:137
 msgid "Show candidate window"
 msgstr "候補ウィンドウを表示"
