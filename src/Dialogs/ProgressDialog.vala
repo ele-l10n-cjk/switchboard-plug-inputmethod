@@ -43,10 +43,10 @@ public class InputMethod.ProgressDialog : Gtk.Dialog {
 
         switch (installer.transaction_mode) {
             case Installer.UbuntuInstaller.TransactionMode.INSTALL:
-                primary_label.label = _("Installing %s").printf (installer.engine_to_install);
+                primary_label.label = _("Installing %s").printf (installer.engine_to_address);
                 break;
             case Installer.UbuntuInstaller.TransactionMode.REMOVE:
-                primary_label.label = _("Removing %s").printf (installer.engine_to_install);
+                primary_label.label = _("Removing %s").printf (installer.engine_to_address);
                 break;
         }
 

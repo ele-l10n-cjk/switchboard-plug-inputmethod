@@ -22,7 +22,7 @@ public class InputMethod.Installer.UbuntuInstaller : Object {
 
     private bool install_cancellable;
     public TransactionMode transaction_mode { get; private set; }
-    public string engine_to_install { get; private set; }
+    public string engine_to_address { get; private set; }
 
     public signal void install_finished (string langcode);
     public signal void install_failed ();
@@ -59,9 +59,9 @@ public class InputMethod.Installer.UbuntuInstaller : Object {
 
     public void install (string engine_name) {
         transaction_mode = TransactionMode.INSTALL;
-        engine_to_install = engine_name;
+        engine_to_address = engine_name;
         string[] packages = {};
-        packages += engine_to_install;
+        packages += engine_to_address;
 
         foreach (var packet in packages) {
             message ("Packet: %s", packet);
