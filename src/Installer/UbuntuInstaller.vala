@@ -22,6 +22,7 @@ public class InputMethod.Installer.UbuntuInstaller : Object {
 
     private bool install_cancellable;
     public TransactionMode transaction_mode { get; private set; }
+    public string engine_to_install { get; private set; }
 
     public signal void install_finished (string langcode);
     public signal void install_failed ();
@@ -58,8 +59,9 @@ public class InputMethod.Installer.UbuntuInstaller : Object {
 
     public void install (string engine_name) {
         transaction_mode = TransactionMode.INSTALL;
+        engine_to_install = engine_name;
         string[] packages = {};
-        packages += engine_name;
+        packages += engine_to_install;
 
         foreach (var packet in packages) {
             message ("Packet: %s", packet);
@@ -74,6 +76,17 @@ public class InputMethod.Installer.UbuntuInstaller : Object {
                 warning ("Could not queue downloads: %s", e.message);
             }
         });
+    }
+
+    public void cancel_install () {
+        if (install_cancellable) {
+            warning ("cancel_install");
+            try {
+                proxy.cancel ();
+            } catch (Error e) {
+                warning ("cannot cancel installation:%s", e.message);
+            }
+        }
     }
 
     private void run_transaction (string transaction_id) {

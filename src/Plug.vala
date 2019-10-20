@@ -39,6 +39,7 @@ public class InputMethod.Plug : Switchboard.Plug {
     }
 
     public Installer.UbuntuInstaller installer { get; private set; }
+    private ProgressDialog progress_dialog = null;
 
     public Plug () {
         Object (category: Category.HARDWARE,
@@ -80,6 +81,19 @@ public class InputMethod.Plug : Switchboard.Plug {
             content_grid = new Gtk.Grid ();
             content_grid.attach (stack, 0, 0, 1, 1);
             content_grid.show_all ();
+
+            installer.progress_changed.connect ((progress) => {
+                if (progress_dialog != null) {
+                    progress_dialog.progress = progress;
+                    return;
+                }
+
+                progress_dialog = new ProgressDialog ();
+                progress_dialog.progress = progress;
+                progress_dialog.transient_for = (Gtk.Window) main_grid.get_toplevel ();
+                progress_dialog.run ();
+                progress_dialog = null;
+            });
         }
 
         return content_grid;

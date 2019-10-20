@@ -15,6 +15,8 @@ if(ibus_dep.version().version_compare('>=1.5.19'))
 endif
 
 shared_module(meson.project_name(),
+    'src/Dialogs/InstallEngineDialog.vala',
+    'src/Dialogs/ProgressDialog.vala',
     'src/Installer/aptd-client.vala',
     'src/Installer/InstallList.vala',
     'src/Installer/UbuntuInstaller.vala',
@@ -23,7 +25,6 @@ shared_module(meson.project_name(),
     'src/Views/LanguagesRow.vala',
     'src/Views/SettingsView.vala',
     'src/Widgets/AddEnginesPopover.vala',
-    'src/Widgets/InstallEngineDialog.vala',
     'src/AddEnginesList.vala',
     'src/Plug.vala',
     'src/Utils.vala',
