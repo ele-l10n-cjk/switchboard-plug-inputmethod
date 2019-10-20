@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: inputmethod-plug\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-10-20 11:15+0900\n"
-"PO-Revision-Date: 2019-08-04 19:01+0900\n"
+"PO-Revision-Date: 2019-10-20 11:28+0900\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -16,33 +16,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #: src/Dialogs/InstallEngineDialog.vala:23
 msgid "Choose an engine to install"
-msgstr ""
+msgstr "インストールするエンジンを選択"
 
 #: src/Dialogs/InstallEngineDialog.vala:24
 msgid "Select an engine from the list to install and use."
-msgstr ""
+msgstr "インストールし使用するエンジンをリストから選択してください。"
 
 #: src/Dialogs/InstallEngineDialog.vala:42
 msgid "Languages"
-msgstr ""
+msgstr "言語"
 
 #: src/Dialogs/InstallEngineDialog.vala:86
 msgid "Install"
-msgstr ""
+msgstr "インストール"
 
 #: src/Dialogs/ProgressDialog.vala:46
 #, c-format
 msgid "Installing %s"
-msgstr ""
+msgstr "%s をインストールしています"
 
 #: src/Dialogs/ProgressDialog.vala:49
-#, fuzzy, c-format
+#, c-format
 msgid "Removing %s"
-msgstr "エンジンを削除"
+msgstr "%s を削除しています"
 
 #: src/Dialogs/ProgressDialog.vala:58 src/Widgets/AddEnginesPopover.vala:74
 msgid "Cancel"
@@ -50,15 +50,15 @@ msgstr "キャンセル"
 
 #: src/Installer/InstallList.vala:26
 msgid "Japanese"
-msgstr ""
+msgstr "日本語"
 
 #: src/Installer/InstallList.vala:28
 msgid "Korean"
-msgstr ""
+msgstr "韓国語"
 
 #: src/Installer/InstallList.vala:30
 msgid "Chinese"
-msgstr ""
+msgstr "中国語"
 
 #: src/Views/EnginesListView.vala:47
 msgid "Add…"
@@ -109,7 +109,7 @@ msgstr "エンジンを検索"
 
 #: src/Widgets/AddEnginesPopover.vala:72
 msgid "Install unlisted engines…"
-msgstr ""
+msgstr "一覧にないエンジンをインストール…"
 
 #: src/Widgets/AddEnginesPopover.vala:76
 msgid "Add Engine"
@@ -128,10 +128,8 @@ msgid "Your Input Method Is Not Supported"
 msgstr "お使いのインプットメソッドはサポートされていません"
 
 #: src/Plug.vala:105
-msgid ""
-"The default input method of the system is not configurable in this Plug."
-msgstr ""
-"システムのデフォルトのインプットメソッドは、このプラグでは設定できません。"
+msgid "The default input method of the system is not configurable in this Plug."
+msgstr "システムのデフォルトのインプットメソッドは、このプラグでは設定できません。"
 
 #: src/Plug.vala:106
 msgid "Please make sure you use IBus as a default input method."
