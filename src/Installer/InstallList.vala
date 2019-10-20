@@ -15,57 +15,55 @@
 * along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-namespace InputMethod {
-    public enum InstallList {
-        JA,
-        KO,
-        ZH;
+public enum InputMethod.InstallList {
+    JA,
+    KO,
+    ZH;
 
-        public string get_name () {
-            switch (this) {
-                case JA:
-                    return _("Japanese");
-                case KO:
-                    return _("Korean");
-                case ZH:
-                    return _("Chinese");
-                default:
-                    assert_not_reached ();
-            }
+    public string get_name () {
+        switch (this) {
+            case JA:
+                return _("Japanese");
+            case KO:
+                return _("Korean");
+            case ZH:
+                return _("Chinese");
+            default:
+                assert_not_reached ();
         }
+    }
 
-        public string[] get_components () {
-            switch (this) {
-                case JA:
-                    return { "ibus-mozc" };
-                case KO:
-                    return { "ibus-hangul" };
-                case ZH:
-                    return { "ibus-cangjie", "ibus-chewing", "ibus-pinyin" };
-                default:
-                    assert_not_reached ();
-            }
+    public string[] get_components () {
+        switch (this) {
+            case JA:
+                return { "ibus-mozc" };
+            case KO:
+                return { "ibus-hangul" };
+            case ZH:
+                return { "ibus-cangjie", "ibus-chewing", "ibus-pinyin" };
+            default:
+                assert_not_reached ();
         }
+    }
 
-        public static InstallList get_language_from_engine_name (string engine_name) {
-            switch (engine_name) {
-                case "ibus-mozc":
-                    return JA;
-                case "ibus-hangul":
-                    return KO;
-                case "ibus-cangjie":
-                    return ZH;
-                case "ibus-chewing":
-                    return ZH;
-                case "ibus-pinyin":
-                    return ZH;
-                default:
-                    assert_not_reached ();
-            }
+    public static InstallList get_language_from_engine_name (string engine_name) {
+        switch (engine_name) {
+            case "ibus-mozc":
+                return JA;
+            case "ibus-hangul":
+                return KO;
+            case "ibus-cangjie":
+                return ZH;
+            case "ibus-chewing":
+                return ZH;
+            case "ibus-pinyin":
+                return ZH;
+            default:
+                assert_not_reached ();
         }
+    }
 
-        public static InstallList[] get_all () {
-            return { JA, KO, ZH };
-        }
+    public static InstallList[] get_all () {
+        return { JA, KO, ZH };
     }
 }
