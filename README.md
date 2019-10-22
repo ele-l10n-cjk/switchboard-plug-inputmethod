@@ -10,7 +10,7 @@ This project tries to address https://github.com/elementary/switchboard-plug-key
 
 ### For Users
 
-    sudo add-apt-repository ppa:ryonakaknock3/switchboard-plug-inputmethod
+    sudo add-apt-repository ppa:ryonakaknock3/ele-l10n-cjk
     sudo apt install switchboard-plug-inputmethod
 
 If you have never added a PPA before, you might need to run this command first: 
