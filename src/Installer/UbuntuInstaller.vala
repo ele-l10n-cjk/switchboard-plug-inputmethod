@@ -20,7 +20,7 @@ public class InputMethod.Installer.UbuntuInstaller : Object {
     private AptdProxy aptd;
     private AptdTransactionProxy proxy;
 
-    private bool install_cancellable;
+    public bool install_cancellable { get; private set; }
     public TransactionMode transaction_mode { get; private set; }
     public string engine_to_address { get; private set; }
 
