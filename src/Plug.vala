@@ -135,6 +135,7 @@ public class InputMethod.Plug : Switchboard.Plug {
         search_results.set ("%s → %s".printf (display_name, _("Remove engines")), "");
         search_results.set ("%s → %s".printf (display_name, _("Switch engines")), "");
         search_results.set ("%s → %s".printf (display_name, _("Show candidate window")), "");
+        search_results.set ("%s → %s".printf (display_name, _("Show icon on system tray")), "");
         return search_results;
     }
 }
