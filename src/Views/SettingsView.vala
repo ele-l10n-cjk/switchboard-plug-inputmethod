@@ -16,7 +16,6 @@
 */
 
 public class InputMethod.SettingsView : Gtk.Grid {
-
     public SettingsView () {
         Object (
             column_spacing: 12,
@@ -45,7 +44,6 @@ public class InputMethod.SettingsView : Gtk.Grid {
         show_ibus_panel_combobox.append ("none", _("Do not show"));
         show_ibus_panel_combobox.append ("auto-hide", _("Auto hide"));
         show_ibus_panel_combobox.append ("always-show", _("Always show"));
-        show_ibus_panel_combobox.active = InputMethod.Plug.ibus_panel_settings.get_int ("show");
 
         var show_system_tray_label = new Gtk.Label (_("Show icon on system tray:"));
         show_system_tray_label.halign = Gtk.Align.END;
@@ -64,10 +62,7 @@ public class InputMethod.SettingsView : Gtk.Grid {
             set_keyboard_shortcut (keyboard_shortcut_combobox.active_id);
         });
 
-        show_ibus_panel_combobox.changed.connect (() => {
-            InputMethod.Plug.ibus_panel_settings.set_int ("show", show_ibus_panel_combobox.active);
-        });
-
+        InputMethod.Plug.ibus_panel_settings.bind ("show", show_ibus_panel_combobox, "active", SettingsBindFlags.DEFAULT);
         InputMethod.Plug.ibus_panel_settings.bind ("show-icon-on-systray", show_system_tray_switch, "active", SettingsBindFlags.DEFAULT);
     }
 
