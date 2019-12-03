@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: inputmethod-plug\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 11:15+0900\n"
+"POT-Creation-Date: 2019-12-03 18:33+0900\n"
 "PO-Revision-Date: 2019-10-20 11:28+0900\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: none\n"
@@ -68,41 +68,45 @@ msgstr "追加…"
 msgid "Remove"
 msgstr "削除"
 
-#: src/Views/SettingsView.vala:30
+#: src/Views/SettingsView.vala:29
 msgid "Switch engines:"
 msgstr "エンジンを切り替え:"
 
-#: src/Views/SettingsView.vala:35
+#: src/Views/SettingsView.vala:34
 msgid "Alt + Space"
 msgstr "Alt + Space"
 
-#: src/Views/SettingsView.vala:36
+#: src/Views/SettingsView.vala:35
 msgid "Ctrl + Space"
 msgstr "Ctrl + Space"
 
-#: src/Views/SettingsView.vala:37
+#: src/Views/SettingsView.vala:36
 msgid "Shift + Space"
 msgstr "Shift + Space"
 
-#: src/Views/SettingsView.vala:40
+#: src/Views/SettingsView.vala:39
 msgid "Show candidate window:"
 msgstr "候補ウィンドウを表示:"
 
-#: src/Views/SettingsView.vala:45
+#: src/Views/SettingsView.vala:44
 msgid "Do not show"
 msgstr "表示しない"
 
-#: src/Views/SettingsView.vala:46
+#: src/Views/SettingsView.vala:45
 msgid "Auto hide"
 msgstr "自動的に隠す"
 
-#: src/Views/SettingsView.vala:47
+#: src/Views/SettingsView.vala:46
 msgid "Always show"
 msgstr "常に表示"
 
-#. /TRANSLATORS: This text appears in a search entry and tell users to type some search word
-#. /to look for a input method engine they want to add.
-#. /It does not mean search engines in web browsers.
+#: src/Views/SettingsView.vala:48
+msgid "Show icon on system tray:"
+msgstr ""
+
+#. TRANSLATORS: This text appears in a search entry and tell users to type some search word
+#. to look for a input method engine they want to add.
+#. It does not mean search engines in web browsers.
 #: src/Widgets/AddEnginesPopover.vala:35
 msgid "Search engine"
 msgstr "エンジンを検索"
@@ -128,8 +132,10 @@ msgid "Your Input Method Is Not Supported"
 msgstr "お使いのインプットメソッドはサポートされていません"
 
 #: src/Plug.vala:105
-msgid "The default input method of the system is not configurable in this Plug."
-msgstr "システムのデフォルトのインプットメソッドは、このプラグでは設定できません。"
+msgid ""
+"The default input method of the system is not configurable in this Plug."
+msgstr ""
+"システムのデフォルトのインプットメソッドは、このプラグでは設定できません。"
 
 #: src/Plug.vala:106
 msgid "Please make sure you use IBus as a default input method."
@@ -150,3 +156,7 @@ msgstr "エンジンを切り替え"
 #: src/Plug.vala:137
 msgid "Show candidate window"
 msgstr "候補ウィンドウを表示"
+
+#: src/Plug.vala:138
+msgid "Show icon on system tray"
+msgstr ""

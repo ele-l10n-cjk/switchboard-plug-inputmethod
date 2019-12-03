@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: inputmethod-plug\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-20 11:15+0900\n"
+"POT-Creation-Date: 2019-12-03 18:33+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,41 +67,45 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: src/Views/SettingsView.vala:30
+#: src/Views/SettingsView.vala:29
 msgid "Switch engines:"
 msgstr ""
 
-#: src/Views/SettingsView.vala:35
+#: src/Views/SettingsView.vala:34
 msgid "Alt + Space"
 msgstr ""
 
-#: src/Views/SettingsView.vala:36
+#: src/Views/SettingsView.vala:35
 msgid "Ctrl + Space"
 msgstr ""
 
-#: src/Views/SettingsView.vala:37
+#: src/Views/SettingsView.vala:36
 msgid "Shift + Space"
 msgstr ""
 
-#: src/Views/SettingsView.vala:40
+#: src/Views/SettingsView.vala:39
 msgid "Show candidate window:"
 msgstr ""
 
-#: src/Views/SettingsView.vala:45
+#: src/Views/SettingsView.vala:44
 msgid "Do not show"
 msgstr ""
 
-#: src/Views/SettingsView.vala:46
+#: src/Views/SettingsView.vala:45
 msgid "Auto hide"
 msgstr ""
 
-#: src/Views/SettingsView.vala:47
+#: src/Views/SettingsView.vala:46
 msgid "Always show"
 msgstr ""
 
-#. /TRANSLATORS: This text appears in a search entry and tell users to type some search word
-#. /to look for a input method engine they want to add.
-#. /It does not mean search engines in web browsers.
+#: src/Views/SettingsView.vala:48
+msgid "Show icon on system tray:"
+msgstr ""
+
+#. TRANSLATORS: This text appears in a search entry and tell users to type some search word
+#. to look for a input method engine they want to add.
+#. It does not mean search engines in web browsers.
 #: src/Widgets/AddEnginesPopover.vala:35
 msgid "Search engine"
 msgstr ""
@@ -149,4 +153,8 @@ msgstr ""
 
 #: src/Plug.vala:137
 msgid "Show candidate window"
+msgstr ""
+
+#: src/Plug.vala:138
+msgid "Show icon on system tray"
 msgstr ""
