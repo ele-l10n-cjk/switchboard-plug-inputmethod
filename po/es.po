@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: inputmethod-plug\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 18:33+0900\n"
+"POT-Creation-Date: 2020-02-11 09:12+0900\n"
 "PO-Revision-Date: 2019-09-08 06:08-0500\n"
 "Last-Translator: Adolfo Jayme Barrientos <fitojb@ubuntu.com>\n"
 "Language-Team: \n"
@@ -104,6 +104,10 @@ msgstr "Mostrar siempre"
 msgid "Show icon on system tray:"
 msgstr ""
 
+#: src/Views/SettingsView.vala:54
+msgid "Embed preedit text in application window:"
+msgstr ""
+
 #. TRANSLATORS: This text appears in a search entry and tell users to type some search word
 #. to look for a input method engine they want to add.
 #. It does not mean search engines in web browsers.
@@ -160,4 +164,8 @@ msgstr "Mostrar ventana de candidatos"
 
 #: src/Plug.vala:138
 msgid "Show icon on system tray"
+msgstr ""
+
+#: src/Plug.vala:139
+msgid "Embed preedit text in application window"
 msgstr ""
