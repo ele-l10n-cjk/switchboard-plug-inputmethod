@@ -136,6 +136,7 @@ public class InputMethod.Plug : Switchboard.Plug {
         search_results.set ("%s → %s".printf (display_name, _("Switch engines")), "");
         search_results.set ("%s → %s".printf (display_name, _("Show candidate window")), "");
         search_results.set ("%s → %s".printf (display_name, _("Show icon on system tray")), "");
+        search_results.set ("%s → %s".printf (display_name, _("Embed preedit text in application window")), "");
         return search_results;
     }
 }
