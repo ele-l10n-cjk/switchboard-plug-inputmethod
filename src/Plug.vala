@@ -1,6 +1,6 @@
 /*
-* Copyright (c) 2012-2014 Switchboard Developers (http://launchpad.net/switchboard)
-*           (c) 2019 Ryo Nakano
+* Copyright 2012-2014 Switchboard Developers (http://launchpad.net/switchboard)
+*           2019-2020 Ryo Nakano
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
