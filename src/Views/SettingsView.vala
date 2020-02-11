@@ -51,12 +51,20 @@ public class InputMethod.SettingsView : Gtk.Grid {
         var show_system_tray_switch = new Gtk.Switch ();
         show_system_tray_switch.halign = Gtk.Align.START;
 
+        var embed_preedit_text_label = new Gtk.Label (_("Embed preedit text in application window:"));
+        embed_preedit_text_label.halign = Gtk.Align.END;
+
+        var embed_preedit_text_switch = new Gtk.Switch ();
+        embed_preedit_text_switch.halign = Gtk.Align.START;
+
         attach (keyboard_shortcut_label, 0, 0, 1, 1);
         attach (keyboard_shortcut_combobox, 1, 0, 1, 1);
         attach (show_ibus_panel_label, 0, 1, 1, 1);
         attach (show_ibus_panel_combobox, 1, 1, 1, 1);
         attach (show_system_tray_label, 0, 2, 1, 1);
         attach (show_system_tray_switch, 1, 2, 1, 1);
+        attach (embed_preedit_text_label, 0, 3, 1, 1);
+        attach (embed_preedit_text_switch, 1, 3, 1, 1);
 
         keyboard_shortcut_combobox.changed.connect (() => {
             set_keyboard_shortcut (keyboard_shortcut_combobox.active_id);
@@ -64,6 +72,7 @@ public class InputMethod.SettingsView : Gtk.Grid {
 
         InputMethod.Plug.ibus_panel_settings.bind ("show", show_ibus_panel_combobox, "active", SettingsBindFlags.DEFAULT);
         InputMethod.Plug.ibus_panel_settings.bind ("show-icon-on-systray", show_system_tray_switch, "active", SettingsBindFlags.DEFAULT);
+        InputMethod.Plug.ibus_general_settings.bind ("embed-preedit-text", embed_preedit_text_switch, "active", SettingsBindFlags.DEFAULT);
     }
 
     private string get_keyboard_shortcut () {
