@@ -36,7 +36,7 @@ public enum InputMethod.InstallList {
     public string[] get_components () {
         switch (this) {
             case JA:
-                return { "ibus-mozc" };
+                return { "ibus-mozc", "ibus-skk" };
             case KO:
                 return { "ibus-hangul" };
             case ZH:
@@ -49,6 +49,8 @@ public enum InputMethod.InstallList {
     public static InstallList get_language_from_engine_name (string engine_name) {
         switch (engine_name) {
             case "ibus-mozc":
+                return JA;
+            case "ibus-skk":
                 return JA;
             case "ibus-hangul":
                 return KO;
