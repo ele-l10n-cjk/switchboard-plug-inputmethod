@@ -9,10 +9,10 @@
     <release version="1.1.0" date="2020-03-19" urgency="medium">
       <description>
         <ul>
-          <li>Add systray setting</li>
+          <li>Add a switch to toggle visibility of Wingpanel Input Method Indicator</li>
           <li>Update Japanese translation</li>
           <li>Add inline input setting</li>
-          <li>InstallList: Add ibus-skk</li>
+          <li>Make it possible to install ibus-skk</li>
         </ul>
       </description>
     </release>
