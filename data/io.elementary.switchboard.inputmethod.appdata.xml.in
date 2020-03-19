@@ -5,6 +5,18 @@
   <extends>io.elementary.switchboard</extends>
   <name>Input Method</name>
   <summary>Configure input method</summary>
+    <releases>
+    <release version="1.1.0" date="2020-03-19" urgency="medium">
+      <description>
+        <ul>
+          <li>Add a switch to toggle visibility of Wingpanel Input Method Indicator</li>
+          <li>Update Japanese translation</li>
+          <li>Add inline input setting</li>
+          <li>Make it possible to install ibus-skk</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
   <screenshots>
       <screenshot type="default">
           <image>https://raw.githubusercontent.com/ryonakano/switchboard-plug-inputmethod/master/data/screenshot.png</image>
