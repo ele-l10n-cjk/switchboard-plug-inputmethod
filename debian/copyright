@@ -3,7 +3,7 @@ Upstream-Name: switchboard-plug-inputmethod
 Source: https://github.com/ryonakano/switchboard-plug-inputmethod
 
 Files: *
-Copyright: 2019 Ryo Nakano
+Copyright: 2019-2020 Ryo Nakano
 License: GPL-3.0+
 
 License: GPL-3.0+
