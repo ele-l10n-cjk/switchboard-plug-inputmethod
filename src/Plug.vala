@@ -48,7 +48,7 @@ public class InputMethod.Plug : Switchboard.Plug {
                 description:_("Configure input method"),
                 icon: "preferences-desktop-ims",
                 supported_settings: new Gee.TreeMap<string, string?> (null, null));
-        supported_settings.set ("wallpaper", null);
+        supported_settings.set ("input/inputmethod", "InputMethod");
     }
 
     static construct {
