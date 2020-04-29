@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-03 19:19+0900\n"
+"POT-Creation-Date: 2020-04-29 09:07+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +18,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/io.elementary.switchboard.inputmethod.appdata.xml.in:6
-msgid "Input Method"
+msgid "Input Method Settings"
 msgstr ""
 
 #: data/io.elementary.switchboard.inputmethod.appdata.xml.in:7
 msgid "Configure input method"
 msgstr ""
 
-#: data/io.elementary.switchboard.inputmethod.appdata.xml.in:13
+#: data/io.elementary.switchboard.inputmethod.appdata.xml.in:14
+msgid "Add a switch to toggle visibility of Wingpanel Input Method Indicator"
+msgstr ""
+
+#: data/io.elementary.switchboard.inputmethod.appdata.xml.in:15
+msgid "Update Japanese translation"
+msgstr ""
+
+#: data/io.elementary.switchboard.inputmethod.appdata.xml.in:16
+msgid "Add inline input setting"
+msgstr ""
+
+#: data/io.elementary.switchboard.inputmethod.appdata.xml.in:17
+msgid "Make it possible to install ibus-skk"
+msgstr ""
+
+#: data/io.elementary.switchboard.inputmethod.appdata.xml.in:27
 msgid "CJK Kaizen Project for elementary OS (Unofficial)"
 msgstr ""
