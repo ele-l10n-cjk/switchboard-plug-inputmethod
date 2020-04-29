@@ -3,7 +3,7 @@
 <component type="addon">
   <id>io.elementary.switchboard.inputmethod</id>
   <extends>io.elementary.switchboard</extends>
-  <name>Input Method</name>
+  <name>Input Method Settings</name>
   <summary>Configure input method</summary>
   <icon type="stock">preferences-desktop-ims</icon>
   <translation type="gettext">inputmethod-plug</translation>
