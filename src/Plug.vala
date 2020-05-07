@@ -19,7 +19,6 @@
 public class InputMethod.Plug : Switchboard.Plug {
     private Gtk.Grid content_grid;
     public static Settings ibus_general_settings;
-    public static Settings ibus_panel_settings;
     private string _current_input_method;
     public string current_input_method {
         get {
@@ -53,7 +52,6 @@ public class InputMethod.Plug : Switchboard.Plug {
 
     static construct {
         ibus_general_settings = new Settings ("org.freedesktop.ibus.general");
-        ibus_panel_settings = new Settings ("org.freedesktop.ibus.panel");
     }
 
     construct {

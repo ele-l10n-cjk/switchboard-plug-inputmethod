@@ -16,6 +16,7 @@
 */
 
 public class InputMethod.MainView : Gtk.Grid {
+    private GLib.Settings ibus_panel_settings;
     // Stores all installed engines
 #if IBUS_1_5_19
     private List<IBus.EngineDesc> engines = new IBus.Bus ().list_engines ();
@@ -34,6 +35,8 @@ public class InputMethod.MainView : Gtk.Grid {
     }
 
     construct {
+        ibus_panel_settings = new GLib.Settings ("org.freedesktop.ibus.panel");
+
         listbox = new Gtk.ListBox ();
 
         var scroll = new Gtk.ScrolledWindow (null, null);
@@ -153,8 +156,8 @@ public class InputMethod.MainView : Gtk.Grid {
             set_keyboard_shortcut (keyboard_shortcut_combobox.active_id);
         });
 
-        InputMethod.Plug.ibus_panel_settings.bind ("show", show_ibus_panel_combobox, "active", SettingsBindFlags.DEFAULT);
-        InputMethod.Plug.ibus_panel_settings.bind ("show-icon-on-systray", show_system_tray_switch, "active", SettingsBindFlags.DEFAULT);
+        ibus_panel_settings.bind ("show", show_ibus_panel_combobox, "active", SettingsBindFlags.DEFAULT);
+        ibus_panel_settings.bind ("show-icon-on-systray", show_system_tray_switch, "active", SettingsBindFlags.DEFAULT);
         InputMethod.Plug.ibus_general_settings.bind ("embed-preedit-text", embed_preedit_text_switch, "active", SettingsBindFlags.DEFAULT);
 
         update_engines_list ();
