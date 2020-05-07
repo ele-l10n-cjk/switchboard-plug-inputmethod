@@ -62,18 +62,8 @@ public class InputMethod.Plug : Switchboard.Plug {
 
     public override Gtk.Widget get_widget () {
         if (content_grid == null) {
-            var engines_list_view = new InputMethod.EnginesListView ();
-            var settings_view = new InputMethod.SettingsView ();
-
-            var main_grid = new Gtk.Grid ();
-            main_grid.column_spacing = 12;
-            main_grid.row_spacing = 12;
-            main_grid.margin = 12;
-            main_grid.attach (engines_list_view, 0, 0, 1, 1);
-            main_grid.attach (settings_view, 1, 0, 1, 1);
-
             var stack = new Gtk.Stack ();
-            stack.add_named (main_grid, "engines_view");
+            stack.add_named (new InputMethod.MainView (), "engines_view");
             stack.add_named (unsupported_im_grid (), "unsupported_im_view");
             stack.show_all ();
             stack.visible_child_name = (current_input_method == "ibus") ? "engines_view" : "unsupported_im_view";
@@ -90,7 +80,7 @@ public class InputMethod.Plug : Switchboard.Plug {
 
                 progress_dialog = new ProgressDialog ();
                 progress_dialog.progress = progress;
-                progress_dialog.transient_for = (Gtk.Window) main_grid.get_toplevel ();
+                progress_dialog.transient_for = (Gtk.Window) stack.get_toplevel ();
                 progress_dialog.run ();
                 progress_dialog = null;
             });

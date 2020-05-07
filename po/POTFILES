@@ -1,7 +1,6 @@
 src/Dialogs/InstallEngineDialog.vala
 src/Dialogs/ProgressDialog.vala
 src/Installer/InstallList.vala
-src/Views/EnginesListView.vala
-src/Views/SettingsView.vala
+src/Views/MainView.vala
 src/Widgets/AddEnginesPopover.vala
 src/Plug.vala
