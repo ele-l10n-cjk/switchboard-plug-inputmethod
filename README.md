@@ -1,5 +1,8 @@
 # Switchboard Input Method Plug
 
+> ### This Component Has Been Deprecated
+> The functions provided in this Plug were merged into the official Keyboard Plug. You can now configure input method engines there.
+
 ![screenshot](data/Screenshot.png?raw=true)
 
 Switchboard Input Method Plug is an additional Plug for [Switchboard](https://github.com/elementary/switchboard) that allows you to choose, install, and set up input method, which should be useful when you'd like to set up a system that can type Chinese, Japanese, and Korean.
